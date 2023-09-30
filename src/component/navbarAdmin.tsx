@@ -1,8 +1,7 @@
 const NavbarAdmin = () => {
   return (
-    <div className="shadow-lg w-full">
+    <div className="shadow-lg w-full bg-bgOne">
       <div className="flex justify-end mx-6 my-3 items-center ">
-        <h1 className="font-semibold pr-2 text-lg">Hi, Admin</h1>
         <div className="cursor-pointer">
           <img
             className=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 "
@@ -10,6 +9,7 @@ const NavbarAdmin = () => {
             alt="Bordered avatar"
           ></img>
         </div>
+        <h1 className="font-semibold pl-2 text-lg text-white">Admin</h1>
       </div>
     </div>
   );

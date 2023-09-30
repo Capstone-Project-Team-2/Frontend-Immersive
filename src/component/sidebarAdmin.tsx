@@ -61,9 +61,9 @@ const SidebarAdmin = () => {
               <div className="space-y-2 font-medium">
                 <Link to={element.to}>
                   <div
-                    className={`cursor-pointer flex items-center py-2 px-4 text-white hover:bg-bgThird hover:text-white ${
+                    className={`cursor-pointer flex items-center py-2 px-4 text-white hover:bg-bgBtn hover:text-white ${
                       location.pathname === element.to
-                        ? 'bg-bgThird text-white'
+                        ? 'bg-bgBtn text-white'
                         : ''
                     }`}
                   >
