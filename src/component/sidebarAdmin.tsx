@@ -8,6 +8,7 @@ import {
 } from 'react-icons/md';
 import { SiSymantec } from 'react-icons/si';
 import { HiTicket } from 'react-icons/hi2';
+import logo from '../assets/logoAdmin.png';
 
 const SidebarAdmin = () => {
   const location = useLocation();
@@ -52,8 +53,8 @@ const SidebarAdmin = () => {
   return (
     <div>
       <div className="space-y-4 h-screen bg-bgOne">
-        <div className="px-4 py-5">
-          <h1 className="font-bold  text-white text-2xl">Logo</h1>
+        <div className="px-4 py-5 ">
+          <img className="w-28" src={logo} alt="" />
         </div>
         {sideLink.map((element, index) => {
           return (
