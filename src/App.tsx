@@ -1,10 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LoginAdmin from "./page/Admin/loginAdmin";
-import LayoutAdmin from "./component/layoutAdmin";
-import DashboardAdmin from "./page/Admin/dashboardAdmin";
-import ListBuyer from "./page/Admin/listBuyer";
-import Layoutpartner from "./component/layoutPartner";
-import Dashboard from "./page/Partner/dashboard";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LoginAdmin from './page/Admin/loginAdmin';
+import LayoutAdmin from './component/layoutAdmin';
+import DashboardAdmin from './page/Admin/dashboardAdmin';
+import ListBuyer from './page/Admin/listBuyer';
+import Layoutpartner from './component/layoutPartner';
+import Dashboard from './page/Partner/dashboard';
 
 function App() {
   return (

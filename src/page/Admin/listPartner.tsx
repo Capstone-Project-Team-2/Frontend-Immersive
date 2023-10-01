@@ -1,14 +1,14 @@
 import { MdRemoveRedEye } from 'react-icons/md';
 import AnimatedPage from '../../component/animatedPage';
 
-const ListBuyer = () => {
+const ListPartner = () => {
   return (
     <div className="p-10 w-full h-full">
       <AnimatedPage>
         <div className="py-2 w-full bg-bgTwo rounded-lg">
           <div className="p-5 text-white ">
             <h1 className="font-semibold text-lg underline underline-offset-8">
-              List Buyer
+              List Partner
             </h1>
           </div>
           <div className="p-2">
@@ -76,4 +76,4 @@ const ListBuyer = () => {
   );
 };
 
-export default ListBuyer;
+export default ListPartner;
