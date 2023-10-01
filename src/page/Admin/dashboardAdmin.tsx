@@ -3,7 +3,7 @@ import AnimatedPage from '../../component/animatedPage';
 
 const DashboardAdmin = () => {
   return (
-    <div className="p-10 w-full h-full">
+    <div className="p-10 w-full h-screen">
       <AnimatedPage>
         <div className="py-2">
           <h1 className="text-xl font-bold text-white">

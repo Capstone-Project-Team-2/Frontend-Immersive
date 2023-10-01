@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 const LayoutAdmin = () => {
   return (
     <div className="flex">
-      <div className="flex shadow-lg flex-col">
+      <div className="flex shadow-lg flex-col ">
         <SidebarAdmin />
       </div>
       <div className="w-full flex flex-col bg-bgOne">

@@ -1,14 +1,13 @@
-import { MdRemoveRedEye } from 'react-icons/md';
 import AnimatedPage from '../../component/animatedPage';
 
-const ListPartner = () => {
+const ListEvent = () => {
   return (
     <div className="p-10 w-full h-screen">
       <AnimatedPage>
         <div className="py-2 w-full bg-bgTwo rounded-lg">
           <div className="p-5 text-white ">
             <h1 className="font-semibold text-lg underline underline-offset-8">
-              List Partner
+              List Event
             </h1>
           </div>
           <div className="p-2">
@@ -19,16 +18,22 @@ const ListPartner = () => {
                     No
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Full Name
+                    Name Event
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Email
+                    Category
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Phone Number
+                    Start Date
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Address
+                    End Date
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Status
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Action
                   </th>
                 </tr>
               </thead>
@@ -37,25 +42,37 @@ const ListPartner = () => {
                   <td scope="row" className="px-6 py-4 whitespace-nowrap">
                     1
                   </td>
-                  <td className="px-6 py-4">John Doe</td>
-                  <td className="px-6 py-4">john@mail.com</td>
-                  <td className="px-6 py-4">088192654096</td>
+                  <td className="px-6 py-4">
+                    Mobile Legends: Bang Bang Sultan Cup Rising Star
+                  </td>
+                  <td className="px-6 py-4">Tournament</td>
+                  <td className="px-6 py-4">12/09/23</td>
+                  <td className="px-6 py-4">17/09/23</td>
+                  <td className="px-6 py-4 ">On Progress</td>
                   <td className="px-6 py-4 ">
-                    <div className="text-xl pl-8 cursor-pointer">
-                      <MdRemoveRedEye />
+                    <div>
+                      <button className="bg-bgBtn hover: px-4 py-2  rounded-md">
+                        Details
+                      </button>
                     </div>
                   </td>
                 </tr>
-                <tr className="bg-bgTwo border-y border-slate-700 hover:bg-bgOne text-white ">
+                <tr className="bg-bgTwo border-y border-slate-700 hover:bg-bgOne ">
                   <td scope="row" className="px-6 py-4 whitespace-nowrap">
                     2
                   </td>
-                  <td className="px-6 py-4">Robert</td>
-                  <td className="px-6 py-4">robert@mail.com</td>
-                  <td className="px-6 py-4">088187205946</td>
+                  <td className="px-6 py-4">
+                    Bergembira Bersama Musik Festival
+                  </td>
+                  <td className="px-6 py-4">Music</td>
+                  <td className="px-6 py-4">12/09/23</td>
+                  <td className="px-6 py-4">17/09/23</td>
+                  <td className="px-6 py-4 ">Done</td>
                   <td className="px-6 py-4 ">
-                    <div className="text-xl pl-8 cursor-pointer">
-                      <MdRemoveRedEye />
+                    <div>
+                      <button className="bg-bgBtn px-4 py-2  rounded-md">
+                        Details
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -76,4 +93,4 @@ const ListPartner = () => {
   );
 };
 
-export default ListPartner;
+export default ListEvent;

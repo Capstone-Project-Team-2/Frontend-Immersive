@@ -31,33 +31,33 @@ const SidebarAdmin = () => {
       name: 'List Partner',
     },
     {
-      to: '/list-event',
+      to: '/list-event-admin',
       url: <MdEvent />,
       name: 'List Event',
     },
     {
-      to: '/list-event',
+      to: '/list-validation',
       url: <SiSymantec />,
       name: 'Validation',
     },
     {
-      to: '/list-event',
+      to: '/list-validation',
       url: <HiTicket />,
       name: 'Ticket',
     },
     {
-      to: '/list-event',
+      to: '/list-validation',
       url: <MdChat />,
       name: 'Chat',
     },
   ];
 
   return (
-    <div className="h-screen">
+    <div className="h-full">
       <div
         className={` ${
           open ? 'w-64' : 'w-20 '
-        } bg-bgOne h-full p-5  pt-8 relative duration-300`}
+        } bg-bgOne h-full p-5 pt-8 relative duration-300`}
       >
         <img
           src="src\assets\control.png"
