@@ -9,9 +9,11 @@ import {
 import { SiSymantec } from 'react-icons/si';
 import { HiTicket } from 'react-icons/hi2';
 import logo from '../assets/logoAdmin.png';
+import { useState } from 'react';
 
 const SidebarAdmin = () => {
   const location = useLocation();
+  const [open, setOpen] = useState(true);
   const sideLink = [
     {
       to: '/dashboard-admin',
@@ -51,10 +53,23 @@ const SidebarAdmin = () => {
   ];
 
   return (
-    <div>
-      <div className="space-y-4 h-screen bg-bgOne">
-        <div className="px-4 py-5 ">
-          <img className="w-28" src={logo} alt="" />
+    <div className="h-screen">
+      <div
+        className={` ${
+          open ? 'w-64' : 'w-20 '
+        } bg-bgOne h-full p-5  pt-8 relative duration-300`}
+      >
+        <img
+          src="src\assets\control.png"
+          className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
+           border-2 rounded-full  ${!open && 'rotate-180'}`}
+          onClick={() => setOpen(!open)}
+        />
+        <div className="flex gap-x-4 items-center">
+          <img
+            src={logo}
+            className={`cursor-pointer duration-500 ${open && 'scale-75'}`}
+          />
         </div>
         {sideLink.map((element, index) => {
           return (
@@ -62,14 +77,15 @@ const SidebarAdmin = () => {
               <div className="space-y-2 font-medium">
                 <Link to={element.to}>
                   <div
-                    className={`cursor-pointer flex items-center py-2 px-4 text-white hover:bg-bgBtn hover:text-white ${
-                      location.pathname === element.to
-                        ? 'bg-bgBtn text-white'
-                        : ''
-                    }`}
+                    className={`flex mt-4 rounded-md p-2 cursor-pointer hover:bg-bgBtn active:bg-bgBtn text-white text-lg items-center font-semibold gap-x-4 
+                     ${location.pathname === element.to ? 'bg-bgBtn' : ''} `}
                   >
                     <span>{element.url}</span>
-                    <h1 className="px-4 hidden md:block lg:block font-semibold text-sm">
+                    <h1
+                      className={`${
+                        !open && 'hidden'
+                      } origin-left duration-200 `}
+                    >
                       {element.name}
                     </h1>
                   </div>

@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
 * {
   font-family: 'Poppins', sans-serif;
   padding: 0px;
   margin: 0px;
+}
+
+body {
+  font-family: 'Titan One', sans-serif;
 }

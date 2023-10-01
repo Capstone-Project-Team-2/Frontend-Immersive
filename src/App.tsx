@@ -10,16 +10,25 @@ import Eventdetail from "./page/Partner/eventdetail";
 import Transaksi from "./page/Partner/transaksi";
 import Ticket from "./page/Partner/ticket";
 import Volunteer from "./page/Partner/volunteer";
+import LoginBuyer from './page/Buyer/loginBuyer';
+import RegisBuyer from './page/Buyer/regisBuyer';
+import DashboardBuyer from './page/Buyer/dashboardBuyer';
+
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
+          {/* buyyer */}
+          <Route path="/" element={<DashboardBuyer />}>
+          {/* <Route path="/dashboard-buyer" element={<DashboardBuyer />} /> */}
+
+
+          {/* Admin */}
           <Route path="/login-admin" element={<LoginAdmin />} />
-          <Route path="/" element={<LayoutAdmin />}>
-            <Route path="/dashboard-admin" element={<DashboardAdmin />} />
-            <Route path="/list-buyer" element={<ListBuyer />} />
+          <Route path="/dashboard-admin" element={<DashboardAdmin />} />
+          <Route path="/list-buyer" element={<ListBuyer />} />
           </Route>
           <Route path="/" element={<Layoutpartner />}>
             <Route path="/dashboard-partner" element={<Dashboard />} />
