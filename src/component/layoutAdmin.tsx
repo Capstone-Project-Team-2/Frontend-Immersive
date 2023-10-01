@@ -5,12 +5,12 @@ import { Outlet } from 'react-router-dom';
 const LayoutAdmin = () => {
   return (
     <div className="flex">
-      <div className="flexshadow-lg flex-col w-1/5">
+      <div className="flex shadow-lg flex-col">
         <SidebarAdmin />
       </div>
-      <div className="w-full flex flex-col">
+      <div className="w-full flex flex-col bg-bgOne">
         <NavbarAdmin />
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 flex-grow overflow-y-auto w-full bg-black">
           <Outlet />
         </div>
       </div>

@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginAdmin from "./page/Admin/loginAdmin";
 import LayoutAdmin from "./component/layoutAdmin";
@@ -9,6 +8,7 @@ import Dashboard from "./page/Partner/dashboard";
 import LoginBuyer from './page/Buyer/loginBuyer';
 import RegisBuyer from './page/Buyer/regisBuyer';
 import DashboardBuyer from './page/Buyer/dashboardBuyer';
+
 
 
 function App() {
