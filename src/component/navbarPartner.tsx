@@ -27,8 +27,16 @@ const NavbarPartner: FC<headerProps> = ({ id, name, job, image }) => {
       switch (pathname) {
         case "/dashboard-partner":
           return "Dashboard";
-        case "/event-saya":
+        case "/myevents":
           return "Event Saya";
+        case "/myevents/:id":
+          return "Detail Event";
+        case "/myevents/:id/transaksi":
+          return "Detail Event";
+        case "/myevents/:id/ticket":
+          return "Detail Event";
+        case "/myevents/:id/volunteer":
+          return "Detail Event";
         case "/validation":
           return "Validation";
         case "/ticket":

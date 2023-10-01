@@ -5,6 +5,11 @@ import DashboardAdmin from "./page/Admin/dashboardAdmin";
 import ListBuyer from "./page/Admin/listBuyer";
 import Layoutpartner from "./component/layoutPartner";
 import Dashboard from "./page/Partner/dashboard";
+import Event from "./page/Partner/event";
+import Eventdetail from "./page/Partner/eventdetail";
+import Transaksi from "./page/Partner/transaksi";
+import Ticket from "./page/Partner/ticket";
+import Volunteer from "./page/Partner/volunteer";
 
 function App() {
   return (
@@ -18,6 +23,11 @@ function App() {
           </Route>
           <Route path="/" element={<Layoutpartner />}>
             <Route path="/dashboard-partner" element={<Dashboard />} />
+            <Route path="/myevents" element={<Event />} />
+            <Route path="/myevents/:id" element={<Eventdetail />} />
+            <Route path="/myevents/:id/transaksi" element={<Transaksi />} />
+            <Route path="/myevents/:id/ticket" element={<Ticket />} />
+            <Route path="/myevents/:id/volunteer" element={<Volunteer />} />
           </Route>
         </Routes>
       </BrowserRouter>

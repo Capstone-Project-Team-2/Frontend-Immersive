@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import {
-  MdDashboardCustomize,
-  MdPerson,
-  MdPeople,
-  MdEvent,
-  MdChat,
-} from "react-icons/md";
+import { MdDashboardCustomize, MdEvent, MdChat } from "react-icons/md";
 import { SiSymantec } from "react-icons/si";
 import { HiTicket } from "react-icons/hi2";
 
@@ -21,7 +15,8 @@ const Sidebar = () => {
       url: <MdDashboardCustomize />,
       path: "/dashboard-partner",
     },
-    { title: "Event Saya", url: <MdEvent />, path: "/event-saya" },
+    { title: "Event Saya", url: <MdEvent />, path: "/myevents" },
+    { title: "Detail Event", url: <MdEvent />, path: "/myevents/:id" },
     { title: "Validation", url: <SiSymantec />, path: "/validation" },
     { title: "Ticket", url: <HiTicket />, path: "/ticket" },
     { title: "Chat", url: <MdChat />, path: "/chat" },
