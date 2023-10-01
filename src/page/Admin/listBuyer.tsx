@@ -3,7 +3,7 @@ import AnimatedPage from '../../component/animatedPage';
 
 const ListBuyer = () => {
   return (
-    <div className="p-10 w-full h-full">
+    <div className="p-10 w-full h-screen">
       <AnimatedPage>
         <div className="py-2 w-full bg-bgTwo rounded-lg">
           <div className="p-5 text-white ">
