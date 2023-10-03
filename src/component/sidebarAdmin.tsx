@@ -8,7 +8,7 @@ import {
 } from 'react-icons/md';
 import { SiSymantec } from 'react-icons/si';
 import { HiTicket } from 'react-icons/hi2';
-import logo from '../assets/logoAdmin.png';
+import logoAdmin from '../assets/logoAdmin1.png';
 import { useState } from 'react';
 
 const SidebarAdmin = () => {
@@ -36,17 +36,17 @@ const SidebarAdmin = () => {
       name: 'List Event',
     },
     {
-      to: '/list-validation',
+      to: '/validation-admin',
       url: <SiSymantec />,
       name: 'Validation',
     },
     {
-      to: '/list-validation',
+      to: '/list-ticket-admin',
       url: <HiTicket />,
       name: 'Ticket',
     },
     {
-      to: '/list-validation',
+      to: '/chat-admin',
       url: <MdChat />,
       name: 'Chat',
     },
@@ -67,7 +67,7 @@ const SidebarAdmin = () => {
         />
         <div className="flex gap-x-4 items-center">
           <img
-            src={logo}
+            src={logoAdmin}
             className={`cursor-pointer duration-500 ${open && 'scale-75'}`}
           />
         </div>
