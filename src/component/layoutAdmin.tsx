@@ -8,9 +8,9 @@ const LayoutAdmin = () => {
       <div className="flex shadow-lg flex-col ">
         <SidebarAdmin />
       </div>
-      <div className="w-full flex flex-col bg-bgOne">
+      <div className="w-full flex flex-col">
         <NavbarAdmin />
-        <div className="flex-1 flex-grow overflow-y-auto w-full bg-black">
+        <div className="flex-1 flex-grow overflow-y-auto w-full bg-bgMain">
           <Outlet />
         </div>
       </div>
