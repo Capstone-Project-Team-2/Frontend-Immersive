@@ -15,6 +15,10 @@ import Volunteer from "./page/Partner/volunteer";
 import LoginBuyer from './page/Buyer/loginBuyer';
 import RegisBuyer from './page/Buyer/regisBuyer';
 import DashboardBuyer from './page/Buyer/dashboardBuyer';
+import EventBuyer from "./page/Buyer/eventBuyer";
+import DetailEvent from "./page/Buyer/detailEvent";
+import DetailPemesanan from "./page/Buyer/detailPemesanan";
+import Checkout from "./page/Buyer/Checkout";
 
 function App() {
   return (
@@ -22,9 +26,15 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* Buyer */}
-          <Route path="/" element={<DashboardBuyer />}>
-            {/* <Route path="/dashboard-buyer" element={<DashboardBuyer />} /> */}
-          </Route>
+          <Route path="/" element={<DashboardBuyer />} />
+          <Route path="/login-buyer" element={<LoginBuyer />} />
+          <Route path="/regis-buyer" element={<RegisBuyer />} />
+          <Route path="/login-admin" element={<LoginAdmin />} />
+          <Route path="/event-buyer" element={<EventBuyer />} />
+          <Route path="/detail-event" element={<DetailEvent />} />
+          <Route path="/detail-pemesanan" element={<DetailPemesanan />} />
+          <Route path="/checkout" element={<Checkout />} />
+          
           {/* Admin */}
           <Route path="/" element={<LayoutAdmin />}>
             <Route path="/login-admin" element={<LoginAdmin />} />
