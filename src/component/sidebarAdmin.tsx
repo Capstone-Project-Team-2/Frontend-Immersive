@@ -9,6 +9,7 @@ import {
 import { SiSymantec } from 'react-icons/si';
 import { HiTicket } from 'react-icons/hi2';
 import logoAdmin from '../assets/logoAdmin1.png';
+import slide from '../assets/control.png';
 import { useState } from 'react';
 
 const SidebarAdmin = () => {
@@ -60,7 +61,7 @@ const SidebarAdmin = () => {
         } bg-bgOne h-full p-5 pt-8 relative duration-300`}
       >
         <img
-          src="src\assets\control.png"
+          src={slide}
           className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
            border-2 rounded-full  ${!open && 'rotate-180'}`}
           onClick={() => setOpen(!open)}
