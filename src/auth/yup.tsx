@@ -12,13 +12,13 @@ export const LoginAuthBuyer = yup.object({
 });
 
 export const RegisterAuthBuyer = yup.object({
-  name: yup.string().required('Full Name is required'),
-  email: yup
-    .string()
-    .required(`Email is required`)
-    .matches(
-      /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/,
-      'Emails must contain symbols @'
-    ),
-  password: yup.string().required('Password is required'),
-});
+    name: yup.string().required('Full Name is required'),
+    email: yup
+      .string()
+      .required('Email is required')
+      .matches(
+        /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,4}$/,
+        'Emails must contain symbols @'
+      ),
+    password: yup.string().required('Password is required'),
+  });
