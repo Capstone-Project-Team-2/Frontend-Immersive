@@ -1,33 +1,34 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import axios from "axios";
-import { Toaster } from "react-hot-toast";
-import LoginAdmin from "./page/Admin/loginAdmin";
-import LayoutAdmin from "./component/layoutAdmin";
-import DashboardAdmin from "./page/Admin/dashboardAdmin";
-import ListBuyer from "./page/Admin/listBuyer";
-import ListPartner from "./page/Admin/listPartner";
-import ListEventAdmin from "./page/Admin/listEvent";
-import ValidationAdmin from "./page/Admin/validationAdmin";
-import ListTicket from "./page/Admin/listTicket";
-import ChatAdmin from "./page/Admin/chatAdmin";
-import Layoutpartner from "./component/layoutPartner";
-import Dashboard from "./page/Partner/dashboard";
-import Event from "./page/Partner/event";
-import Eventdetail from "./page/Partner/eventdetail";
-import Transaksi from "./page/Partner/transaksi";
-import Ticket from "./page/Partner/ticket";
-import Volunteer from "./page/Partner/volunteer";
-import LoginBuyer from "./page/Buyer/loginBuyer";
-import RegisBuyer from "./page/Buyer/regisBuyer";
-import DashboardBuyer from "./page/Buyer/dashboardBuyer";
-import EventBuyer from "./page/Buyer/eventBuyer";
-import DetailEvent from "./page/Buyer/detailEvent";
-import DetailPemesanan from "./page/Buyer/detailPemesanan";
-import Checkout from "./page/Buyer/Checkout";
-import LoginPartner from "./page/Partner/loginPartner";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
+import { Toaster } from 'react-hot-toast';
+import LoginAdmin from './page/Admin/loginAdmin';
+import LayoutAdmin from './component/layoutAdmin';
+import DashboardAdmin from './page/Admin/dashboardAdmin';
+import ListBuyer from './page/Admin/listBuyer';
+import ListPartner from './page/Admin/listPartner';
+import ListEventAdmin from './page/Admin/listEvent';
+import ValidationAdmin from './page/Admin/validationAdmin';
+import ListTicket from './page/Admin/listTicket';
+import ChatAdmin from './page/Admin/chatAdmin';
+import Layoutpartner from './component/layoutPartner';
+import Dashboard from './page/Partner/dashboard';
+import Event from './page/Partner/event';
+import Eventdetail from './page/Partner/eventdetail';
+import Transaksi from './page/Partner/transaksi';
+import Ticket from './page/Partner/ticket';
+import Volunteer from './page/Partner/volunteer';
+import LoginBuyer from './page/Buyer/loginBuyer';
+import RegisBuyer from './page/Buyer/regisBuyer';
+import DashboardBuyer from './page/Buyer/dashboardBuyer';
+import EventBuyer from './page/Buyer/eventBuyer';
+import DetailEvent from './page/Buyer/detailEvent';
+import DetailPemesanan from './page/Buyer/detailPemesanan';
+import Checkout from './page/Buyer/Checkout';
+import LoginPartner from './page/Partner/loginPartner';
+import RegisterPartner from './page/Partner/registerPartner';
 
 function App() {
-  axios.defaults.baseURL = "https://backendlagi.online";
+  axios.defaults.baseURL = 'https://backendlagi.online';
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
@@ -56,6 +57,7 @@ function App() {
           </Route>
           {/* Partner */}
           <Route path="/login-partner" element={<LoginPartner />} />
+          <Route path="/register-partner" element={<RegisterPartner />} />
           <Route path="/" element={<Layoutpartner />}>
             <Route path="/dashboard-partner" element={<Dashboard />} />
             <Route path="/myevents" element={<Event />} />
