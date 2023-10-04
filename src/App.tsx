@@ -28,6 +28,8 @@ import LoginPartner from './page/Partner/loginPartner';
 import RegisterPartner from './page/Partner/registerPartner';
 import LayoutBuyer from './component/layoutBuyer';
 import PersonalData from './page/Buyer/profile/personalData';
+import TiketBuyer from './page/Buyer/profile/tiket';
+import RefundBuyer from './page/Buyer/profile/refund';
 
 function App() {
   axios.defaults.baseURL = 'https://backendlagi.online';
@@ -47,6 +49,8 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/" element={<LayoutBuyer />}>
             <Route path="/profile-personal" element={<PersonalData />} />
+            <Route path="/profile-tiket" element={<TiketBuyer />} />
+            <Route path="/profile-refund" element={<RefundBuyer />} />
           </Route>
 
           {/* Admin */}

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  MdAccountCircle,
-} from 'react-icons/md';
+import { MdAccountCircle } from 'react-icons/md';
 import { HiTicket } from 'react-icons/hi2';
 import logoBuyer from '../assets/logoBuyerFix.png';
 import { useState } from 'react';
@@ -24,7 +22,7 @@ const SidebarBuyer = () => {
       name: 'Ticket',
     },
     {
-        to: '/profile-tiket',
+        to: '/profile-refund',
         url: <RiRefund2Line />,
         name: 'Refund',
       },

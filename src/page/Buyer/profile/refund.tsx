@@ -1,61 +1,45 @@
 import React from 'react'
 import AnimatedPage from '../../../component/animatedPage'
+import Button from '../../../component/button'
+import { SlCalender } from "react-icons/sl";
 
-const PersonalData = () => {
+const RefundBuyer = () => {
     return (
         <section>
             <AnimatedPage>
                 <div className="py-2 w-full bg-gray-200 ">
                     <div className="p-5 text-white ">
                         <h1 className="font-semibold text-black mx-8 text-lg underline underline-offset-8">
-                            Personal Data
+                            Tiket Saya
                         </h1>
                     </div>
                     <div className='shadow-md border-4 my-10 mx-10 flex flex-row bg-white'>
-                        <div className='ml-10 mt-10 flex flex-col'>
-                            <img src="https://www.openhost.co.za/download/bootmin/img/avatar_lg.jpg" alt="" className='rounded-full  h-32 w-36' />
-                            {/* <div className="mt-10 form-control w-full">
-                                <label className="label">
-                                    <span className="label-text">Upload File</span>
-                                </label>
-                                <input
-                                    type="file"
-                                    className="file-input file-input-primary file-input-md bg-transparent max-w-3xl"
-                                />
-                            </div> */}
+                        <div className=' flex flex-col'>
+                            <img src="https://s3-ap-southeast-1.amazonaws.com/loket-production-sg/images/banner/20230905110542_64f6a91690d6f.jpg" alt="" className='h-32 w-full' />
                         </div>
                         <div className='flex'>
-                            <div className='ml-10 mt-10 flex flex-col text-bold'>
-                                <div className='mt-5'>Full Name</div>
-                                <div className='mt-8'>Email</div>
-                                <div className='mt-8'>Phone Number</div>
-                                <div className='mt-5'>Address</div>
+                            <div className='ml-10 flex flex-col text-bold'>
+                                <div className='text-extrabold text-3xl font-[titan]'>ROCK IN SOLO FESTIVAL</div>
+                                <div className='flex flex-row my-3'>
+                                <SlCalender classname="bg-black"/>
+                                <div className='ml-3 flex font-semibold '>10 Dec 2023</div>
+                                </div>
+                                <div className='text-3xl font-bold text-red-600'>REFUND GAGAL</div>
                             </div>
-                            <div className='ml-10 mt-10 flex flex-col'>
-                                <div>
-                                    <input
-                                        className='p-2 my-2 shadow-md bg-white'
-                                        placeholder='Fullname'
-                                    />
+                        </div>
+                    </div>
+                    <div className='shadow-md border-4 my-10 mx-10 flex flex-row bg-white'>
+                        <div className=' flex flex-col'>
+                            <img src="https://s3-ap-southeast-1.amazonaws.com/loket-production-sg/images/banner/20230905110542_64f6a91690d6f.jpg" alt="" className='h-32 w-full' />
+                        </div>
+                        <div className='flex'>
+                            <div className='ml-10 flex flex-col text-bold'>
+                                <div className='text-extrabold text-3xl font-[titan]'>ROCK IN SOLO FESTIVAL</div>
+                                <div className='flex flex-row my-3'>
+                                <SlCalender classname="bg-black"/>
+                                <div className='ml-3 flex font-semibold '>10 Dec 2023</div>
                                 </div>
-                                <div>
-                                    <input
-                                        className='p-2 my-2 shadow-md bg-white'
-                                        placeholder='Email'
-                                    />
-                                </div>
-                                <div>
-                                    <input
-                                        className='p-2 my-2 shadow-md bg-white'
-                                        placeholder='Phone Number'
-                                    />
-                                </div>
-                                <div>
-                                    <input
-                                        className='p-10 my-2 shadow-md bg-white'
-                                        placeholder='Phone Number'
-                                    />
-                                </div>
+                                <div className='text-3xl font-bold text-green-600'>REFUND BERHASIL</div>
                             </div>
                         </div>
                     </div>
@@ -65,4 +49,4 @@ const PersonalData = () => {
     )
 }
 
-export default PersonalData
+export default RefundBuyer
