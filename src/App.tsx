@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
+import { Toaster } from 'react-hot-toast';
 import LoginAdmin from './page/Admin/loginAdmin';
 import LayoutAdmin from './component/layoutAdmin';
 import DashboardAdmin from './page/Admin/dashboardAdmin';
@@ -24,8 +26,10 @@ import DetailPemesanan from './page/Buyer/detailPemesanan';
 import Checkout from './page/Buyer/Checkout';
 
 function App() {
+  axios.defaults.baseURL = 'https://backendlagi.online';
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <BrowserRouter>
         <Routes>
           {/* Buyer */}
