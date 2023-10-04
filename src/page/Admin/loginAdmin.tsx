@@ -4,18 +4,21 @@ const LoginAdmin = () => {
   const navigate = useNavigate();
   return (
     <section>
-      <div className="grid grid-cols-2  mx-auto h-screen md:h-screen">
-        <div className="flex flex-col items-center relative">
-          <h1 className="text-3xl font-bold absolute text-white pt-3">
-            Welcome Admin
-          </h1>
-          <img
-            className="h-screen w-full"
-            src="https://images.unsplash.com/photo-1522158637959-30385a09e0da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-            alt=""
-          />
+      <div className="flex h-screen">
+        <div
+          className="relative w-1/2 bg-cover"
+          style={{
+            backgroundImage:
+              'url("https://images.unsplash.com/photo-1522158637959-30385a09e0da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80")',
+          }}
+        >
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
+            <h1 className="text-4xl font-bold mb-2 font-[titan]">Welcome!</h1>
+            <h3 className="text-xl ">Event, Easier With EVVE</h3>
+          </div>
         </div>
-        <div className="flex justify-center items-center  ">
+        <div className="flex items-center mx-auto">
           <div className="p-6 space-y-4 w-96 md:space-y-6 sm:p-8">
             <div className="space-y-3">
               <h1 className="text-2xl text-center font-bold leading-tight tracking-tight md:text-3xl">
