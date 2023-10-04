@@ -64,17 +64,17 @@ const LoginBuyer = () => {
           <form onSubmit={formik.handleSubmit}>
             <div className="mb-4">
               <label
-                htmlFor="username"
+                htmlFor="email"
                 className="block text-gray-700 text-sm font-bold mb-2 pt-2"
               >
-                Username:
+                Email:
               </label>
               <input
                 type="text"
                 name="email"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
-                placeholder="Enter your username"
+                placeholder="Enter your email"
                 autoComplete="off"
                 className={`bg-gray-50 border ${
                   formik.touched.email && formik.errors.email
@@ -102,7 +102,7 @@ const LoginBuyer = () => {
                 onChange={formik.handleChange}
                 placeholder="Enter your password"
                 className={`bg-gray-50 border relative ${
-                  formik.touched.email && formik.errors.email
+                  formik.touched.password && formik.errors.password
                     ? `border-red-800`
                     : 'border-gray-300 border-2'
                 } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
