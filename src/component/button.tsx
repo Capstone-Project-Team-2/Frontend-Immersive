@@ -1,7 +1,6 @@
 import { FC } from "react";
 
 interface btnProps {
-  id: string;
   label?: string;
   color?: string;
   width?: string;
@@ -15,7 +14,7 @@ const Button: FC<btnProps> = ({ id, label, color, width, height, onClick }) => {
       <button
         id={id}
         onClick={onClick}
-        className={`text-white ${color} w-${width} h-${height} hover:bg-slate-500 border rounded-md px-4 py-2 font-semibold`}
+        className={`text-white ${color} w-${width} h-${height} hover:bg-blue-900 border rounded-md px-4 py-2 font-semibold`}
       >
         {label}
       </button>
