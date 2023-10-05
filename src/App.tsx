@@ -28,6 +28,11 @@ import LoginPartner from "./page/Partner/loginPartner";
 import RegisterPartner from "./page/Partner/registerPartner";
 import ProfilePartner from "./page/Partner/profilePartner";
 import BuatEvent from "./page/Partner/buatEvent";
+import TiketBuyer from './page/Buyer/profile/tiket';
+import RefundBuyer from './page/Buyer/profile/refund';
+import PersonalData from './page/Buyer/profile/personalData';
+import LayoutBuyer from './component/layoutBuyer';        
+
 
 function App() {
   axios.defaults.baseURL = "https://backendlagi.online";
@@ -45,6 +50,11 @@ function App() {
           <Route path="/detail-event" element={<DetailEvent />} />
           <Route path="/detail-pemesanan" element={<DetailPemesanan />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/" element={<LayoutBuyer />}>
+            <Route path="/profile-personal" element={<PersonalData />} />
+            <Route path="/profile-tiket" element={<TiketBuyer />} />
+            <Route path="/profile-refund" element={<RefundBuyer />} />
+          </Route>
 
           {/* Admin */}
           <Route path="/login-admin" element={<LoginAdmin />} />

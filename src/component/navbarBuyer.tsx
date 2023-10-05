@@ -17,7 +17,7 @@ const NavbarBuyer = () => {
           <h1 className="font-extrabold text-xl">EVVE</h1>
         </div>
       </div>
-      <div className="navbar-center">
+      <div className="mr-36">
         <ul className="flex space-x-4">
           <li>
             <a href="/" className="text-white">

@@ -12,6 +12,7 @@ export const LoginAuthBuyer = yup.object({
 });
 
 export const RegisterAuthBuyer = yup.object({
+
   name: yup.string().required("Full Name is required"),
   email: yup
     .string()
@@ -40,3 +41,4 @@ export const ProfilAuthPartner = yup.object({
   address: yup.string().required("Address is required"),
   photo: yup.mixed().required("Photo is required"),
 });
+
