@@ -6,16 +6,25 @@ interface btnProps {
   color?: string;
   width?: string;
   height?: string;
+  hover?: string;
   onClick?: React.MouseEventHandler;
 }
 
-const Button: FC<btnProps> = ({ id, label, color, width, height, onClick }) => {
+const Button: FC<btnProps> = ({
+  id,
+  label,
+  color,
+  width,
+  height,
+  hover,
+  onClick,
+}) => {
   return (
     <>
       <button
         id={id}
         onClick={onClick}
-        className={`text-white ${color} w-${width} h-${height} hover:bg-slate-500 border rounded-md px-4 py-2 font-semibold`}
+        className={`text-white ${color} w-${width} h-${height} hover:${hover} border rounded-md px-4 py-2 font-semibold`}
       >
         {label}
       </button>

@@ -16,7 +16,7 @@ const Layoutpartner = () => {
           job="Manager"
           name=" Jheni Doe"
         />
-        <div className="flex-1 flex-grow overflow-y-auto w-full bg-black">
+        <div className="flex-1 flex-grow overflow-y-auto w-full bg-gradient-to-r from-bgTwo from-10% via-gray-700 via-50% to-bgOne to-90%">
           <Outlet />
         </div>
       </div>
