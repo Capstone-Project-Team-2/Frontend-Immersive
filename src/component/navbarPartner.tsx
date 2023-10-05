@@ -39,6 +39,8 @@ const NavbarPartner: FC<headerProps> = ({ id, name, job, image }) => {
           return "Detail Event";
         case "/validation":
           return "Validation";
+        case "/buat-event":
+          return "Buat Event";
         case "/ticket":
           return "Ticket";
         case "/chat":
