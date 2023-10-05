@@ -15,7 +15,7 @@ const LoginBuyer = () => {
       email: '',
       password: '',
     },
-    validationSchema: LoginAuthBuyer,
+    validationSchema: LoginAuthBuyer,   
     onSubmit: (values) => {
       setStatus(true);
       axios
@@ -28,6 +28,7 @@ const LoginBuyer = () => {
           console.log('token', response.data.data.token);
           console.log('data', response.data.data);
           Cookies.set('token', response.data.data.token);
+          Cookies.set('id', response.data.data.id);
           navigate('/');
           setStatus(false);
         })
