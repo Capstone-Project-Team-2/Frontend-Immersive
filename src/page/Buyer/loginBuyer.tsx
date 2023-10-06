@@ -29,6 +29,7 @@ const LoginBuyer = () => {
           console.log('data', response.data.data);
           Cookies.set('token', response.data.data.token);
           Cookies.set('id', response.data.data.id);
+          Cookies.set('name',response.data.data.name);
           navigate('/');
           setStatus(false);
         })
