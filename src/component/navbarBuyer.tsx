@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import logoBuyer from '../assets/logoBuyer1.png';
-import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import logoBuyer from "../assets/logoBuyer1.png";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const NavbarBuyer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [greeting, setGreeting] = useState("");
   const [data, setData] = useState("");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const name = Cookies.get("name");
   const token = Cookies.get("token");
   const buyer_id = Cookies.get("id");
@@ -19,9 +19,9 @@ const NavbarBuyer = () => {
   };
 
   const handleLogout = () => {
-    Cookies.remove('token');
-    toast.success('Successfully Logout');
-    navigate('/login-buyer'); 
+    Cookies.remove("token");
+    toast.success("Successfully Logout");
+    navigate("/login-buyer");
   };
 
   const getTimezone = () => {
@@ -47,10 +47,10 @@ const NavbarBuyer = () => {
       })
       .then((res) => {
         setData(res?.data?.data);
-        console.log(res?.data?.data.profile_picture)
+        console.log(res?.data?.data.profile_picture);
       })
-      .catch(() => {
-        toast.error("Anda Belum Melakukan Login");
+      .catch((err) => {
+        console.log(err);
       });
   };
   console.log(data);
@@ -63,8 +63,12 @@ const NavbarBuyer = () => {
   return (
     <nav className="bg-blue-950 p-4 flex fixed top-0 items-center justify-between w-full z-50">
       <div className="flex">
-        <img src={logoBuyer} alt="Brand Logo" className="w-14"
-        onClick={() => navigate("/")} />
+        <img
+          src={logoBuyer}
+          alt="Brand Logo"
+          className="w-14"
+          onClick={() => navigate("/")}
+        />
         <div className="text-white items-center pt-2">
           <p className="font-normal text-xs">Event, easier with</p>
           <h1 className="font-extrabold text-xl">EVVE</h1>
@@ -90,8 +94,8 @@ const NavbarBuyer = () => {
         </ul>
       </div>
       <div className="navbar-right flex items-center space-x-4 relative">
-        <div className='flex flex-row'>
-        <div className="text-white mr-2 font-semibold text-xl">
+        <div className="flex flex-row">
+          <div className="text-white mr-2 font-semibold text-xl">
             {greeting}, {data.name}
           </div>
           <div className="relative group" onClick={toggleDropdown}>
@@ -128,7 +132,6 @@ const NavbarBuyer = () => {
           </div>
         </div>
       </div>
-
     </nav>
   );
 };
