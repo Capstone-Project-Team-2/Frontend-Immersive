@@ -1,26 +1,48 @@
-import React from 'react';
 import NavbarBuyer from '../../component/navbarBuyer';
 import FootbarBuyer from '../../component/footbarBuyer';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import Modal from '../../component/modal';
+import Button from '../../component/button';
 
 const DashboardBuyer = () => {
+
+  const navigate = useNavigate();
+  const [popupSignIn, setPopupSignIn] = useState<boolean>(false);
+  const [popupSignUp, setPopupSignUp] = useState<boolean>(false);
+
+  const handleSignIn = () => {
+    setPopupSignIn(!popupSignIn);
+  };
+
+  const handleSignUp = () => {
+    setPopupSignUp(!popupSignUp);
+  };
+
+
   return (
     <section>
       <NavbarBuyer />
-      <div className="relative w-full h-60 bg-gray-200">
+      <div className="relative w-full h-96 mt-20 bg-gray-200">
         <img
           src="https://linebank.co.id/blog/wp-content/uploads/2022/10/Blog_Acara-Konser-Musik-Tahunan-di-Indonesia-buat-Pecinta-Musik.jpg"
           alt="Background"
-          className="w-full h-full "
+          className="w-full  h-96  "
         />
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="absolute inset-0 flex flex-col font-[titan] items-center justify-center text-white text-2xl font-bold">
           <div>Pencarian tiket event semakin mudah di E V V E.</div>
           <div>Mulai Sekarang!</div>
-          <div className="mt-4 flex space-x-4">
-            <button className="bg-blue-950 hover:bg-blue-700 text-white font-normal text-lg py-2 px-4 rounded-lg">
+          <div className="mt-4 flex space-x-4 ">
+            <button className="bg-blue-950 hover:bg-blue-700 text-white font-normal text-lg py-2 px-4 rounded-lg"
+              onClick={() => handleSignIn()}
+              >
               Sign In
             </button>
-            <button className="bg-blue-950 hover:bg-blue-700 text-white font-normal text-lg py-2 px-4 rounded-lg">
+            <button className="bg-blue-950 hover:bg-blue-700 text-white font-normal text-lg py-2 px-4 rounded-lg"
+              onClick={() => handleSignUp()}
+              >
+
               Sign Up
             </button>
           </div>
@@ -131,6 +153,14 @@ const DashboardBuyer = () => {
           </div>
         </div>
       </div>
+      <div className="my-5 flex justify-center">
+        <button
+          className="bg-blue-950 hover:bg-blue-700 rounded-full py-3 px-10 text-white"
+          onClick={() => navigate('/event-buyer')}
+        >
+          More
+        </button>
+      </div>
       <div className="bg-blue-600 text-white py-6 text-center">
         <h2 className="font-bold text-2xl">About Us</h2>
         <p className="text-lg mt-2">
@@ -141,11 +171,11 @@ const DashboardBuyer = () => {
           laudantium mollitia maxime nisi, quisquam iusto illo sed earum omnis
           voluptatum ipsum consequuntur ipsa.
         </p>
-        <button className="bg-blue-950 hover:bg-blue-900 rounded-full py-3 px-10">
+        <button className="bg-blue-950 hover:bg-blue-700 rounded-full my-5 py-3 px-10">
           More
         </button>
       </div>
-      <h1 className="font-bold text-xl mt-8 mb-4 text-center">PARTNERSHIP</h1>
+      <h1 className="font-bold text-xl mt-8  mb-4 text-center">PARTNERSHIP</h1>
       <div className="flex justify-center space-x-4">
         <a href="/link-ke-partner-1">
           <img
@@ -183,6 +213,40 @@ const DashboardBuyer = () => {
           />
         </a>
       </div>
+      <Modal isOpen={popupSignIn} onClose={() => setPopupSignIn(false)}>
+        <div className="w-[30vw] h-[30vh] flex flex-col">
+          <div className="text-[24px] text-center font-semibold my-2">
+            SignIn as
+          </div>
+          <div className="mx-auto mt-5">
+            <Button id="Add" label="BUYER" color="bg-gray-800" width="40"  
+            onClick={() => navigate("/login-buyer")} 
+            />
+          </div>
+          <div className="mx-auto mt-5">
+            <Button id="Add" label="PARTNER" color="bg-gray-800" width="40" 
+            onClick={() => navigate("/login-partner")} 
+            />
+          </div>
+        </div>
+      </Modal>
+      <Modal isOpen={popupSignUp} onClose={() => setPopupSignUp(false)}>
+        <div className="w-[30vw] h-[30vh] flex flex-col">
+          <div className="text-[24px] text-center font-semibold my-2">
+            SignUp as
+          </div>
+          <div className="mx-auto mt-5">
+            <Button id="Add" label="BUYER" color="bg-gray-800" width="40"  
+            onClick={() => navigate("/regis-buyer")} 
+            />
+          </div>
+          <div className="mx-auto mt-5">
+            <Button id="Add" label="PARTNER" color="bg-gray-800" width="40" 
+            onClick={() => navigate("/register-partner")} 
+            />
+          </div>
+        </div>
+      </Modal>
       <FootbarBuyer />
     </section>
   );

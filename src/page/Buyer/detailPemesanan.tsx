@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import AnimatedPage from '../../component/animatedPage';
 
 const DetailPemesanan = () => {
+
   const navigate = useNavigate();
 
   useEffect(() => {
