@@ -29,7 +29,7 @@ const LoginPartner = () => {
           console.log("token", response.data.data.token);
           console.log("data", response.data.data);
           Cookies.set("token", response.data.data.token);
-          Cookies.set("token", response.data.data.id);
+          Cookies.set("id", response.data.data.id);
           navigate("/dashboard-partner");
           setStatus(false);
         })
