@@ -7,7 +7,7 @@ const DetailPemesanan = () => {
     return (
         <section>
             <NavbarBuyer />
-            <div className='bg-yellow-300 shadow-md  p-5 text-center '>
+            <div className='bg-yellow-300 shadow-md mt-20 p-5 text-center '>
                 10:50  Segera Selesaikan Pesananmu
                 </div>
             <div className='flex mt-10 ml-10'>
@@ -30,13 +30,13 @@ const DetailPemesanan = () => {
                         <div className='flex flex-row justify-between font-medium'>
                             <div>Jenis Tiket</div>
                             <div>Harga</div>
-                            <div>Jumlah</div>
+                            <div className='mr-3'>Jumlah</div>
                         </div>
                         <div className="border-t border-gray-400 w-full mb-2 mt-2"></div>
                         <div className='flex flex-row font-normal justify-between'>
                             <div>VIP</div>
                             <div>Rp.250.000</div>
-                            <div>2x</div>
+                            <div className='mr-5'>2x</div>
                         </div>
                     </div>
                 </div>

@@ -6,7 +6,7 @@ const DetailEvent = () => {
     return (
         <section className='bg-gray-200 min-h-screen'>
             <NavbarBuyer />
-            <div className='flex flex-row md:flex-row mt-10 '>
+            <div className='flex flex-row md:flex-row mt-20 '>
                 <div className='w-full'>
                     <div className='flex items-center mt-10 ml-5'>
                         <div className="w-[800px] h-96 border-r border-gray-400 flex items-center justify-center">

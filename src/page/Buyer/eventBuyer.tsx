@@ -7,7 +7,7 @@ const EventBuyer = () => {
   return (
     <section>
       <NavbarBuyer />
-      <div className=' mt-10 flex items-center justify-between'>
+      <div className=' mt-10 flex mt-32 items-center mx-12 justify-between'>
         <select className="select select-bordered bg-transparent">
           <option disabled selected>
             Pick one
@@ -86,13 +86,7 @@ const EventBuyer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-blue-600 text-white py-6 mt-10 text-center">
-        <h2 className="font-bold text-2xl">About Us</h2>
-        <p className="text-lg mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse ratione harum repudiandae ea sed ab ut cum officiis. Dolorem, numquam molestiae repudiandae magnam ducimus incidunt, quaerat deleniti exercitationem esse odio aperiam, voluptatem et? Laborum error hic laudantium mollitia maxime nisi, quisquam iusto illo sed earum omnis voluptatum ipsum consequuntur ipsa.</p>
-        <button className='bg-blue-950 hover:bg-blue-900 rounded-full py-3 px-10'>
-          More
-        </button>
-      </div>
+      
       <h1 className='font-[titan] font-bold text-3xl text-left mt-5 ml-14'>List Event</h1>
       <div className="flex flex-wrap justify-around mt-5 ml-5">
         {/* Card 1 */}
