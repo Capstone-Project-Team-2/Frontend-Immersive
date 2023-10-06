@@ -4,7 +4,7 @@ import AnimatedPage from "../../component/animatedPage";
 import { Tabs } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 
-const Ticket = () => {
+const Promo = () => {
   const navigate = useNavigate();
   return (
     <div className="p-10 h-full bg-gradient-to-r from-bgTwo from-10% via-gray-700 via-50% to-bgTwo to-100%">
@@ -58,9 +58,7 @@ const Ticket = () => {
                       <td className="px-6 py-4 ">On Progress</td>
                       <td className="px-6 py-4 ">
                         <div className="flex justify-center text-green-400 cursor-pointer">
-                          <BiDetail
-                            onClick={() => navigate("/ticket-refund")}
-                          />
+                          <BiDetail onClick={() => navigate("/promo-list")} />
                         </div>
                       </td>
                     </tr>
@@ -166,4 +164,4 @@ const Ticket = () => {
   );
 };
 
-export default Ticket;
+export default Promo;

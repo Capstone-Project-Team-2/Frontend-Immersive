@@ -1,17 +1,43 @@
 import { FaTrashAlt } from "react-icons/fa";
-import { BiDetail } from "react-icons/bi";
 import AnimatedPage from "../../component/animatedPage";
+import Button from "../../component/button";
+import { useNavigate } from "react-router-dom";
 
-const Transaksi = () => {
+const Checkin = () => {
   return (
     <div className="p-10 h-full bg-gradient-to-r from-bgTwo from-10% via-gray-700 via-50% to-bgTwo to-100%">
       <AnimatedPage>
         <div className="py-2 w-full bg-bgTwo rounded-lg">
           <div className="p-5 text-white ">
-            <h1 className="font-semibold ">Transaksi</h1>
+            <h1 className="font-semibold ">Ticket</h1>
             <h1 className="font-semibold mt-3">
               Mobile Legends: Bang Bang Sultan Cup Rising Star
             </h1>
+          </div>
+          <div className="flex gap-5 text-semibold me-5">
+            <input
+              type="text"
+              placeholder="Search here..."
+              className="w-60 h-10 ms-10 rounded-md"
+            ></input>
+            <Button
+              id="add volunteer"
+              label="Search"
+              width="24"
+              height="10"
+              color="bg-bgBtn"
+              hover="bg-blue-900"
+            />
+            <span className="ml-[26vw]">
+              <Button
+                id="add volunteer"
+                label="Scan Ticket"
+                width="36"
+                height="10"
+                color="bg-bgBtn"
+                hover="bg-blue-900"
+              />
+            </span>
           </div>
           <div className="p-2">
             <table className="w-full text-sm text-left  font-semibold">
@@ -27,10 +53,7 @@ const Transaksi = () => {
                     Ticket Class
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Status Payment
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Method Payment
+                    Status Use
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Action
@@ -44,11 +67,10 @@ const Transaksi = () => {
                   </td>
                   <td className="px-6 py-4">John Doe</td>
                   <td className="px-6 py-4">VIP</td>
-                  <td className="px-6 py-4">Paid</td>
-                  <td className="px-6 py-4 ">Gopay</td>
+                  <td className="px-6 py-4 ">Not Used</td>
                   <td className="px-6 py-4 ">
-                    <div className="flex justify-center text-green-400 cursor-pointer">
-                      <BiDetail />
+                    <div className="flex justify-center text-red-500 cursor-pointer">
+                      <FaTrashAlt />
                     </div>
                   </td>
                 </tr>
@@ -58,11 +80,10 @@ const Transaksi = () => {
                   </td>
                   <td className="px-6 py-4">Windah Basudara</td>
                   <td className="px-6 py-4">Gold</td>
-                  <td className="px-6 py-4">Not yet</td>
-                  <td className="px-6 py-4 ">Alfamart</td>
+                  <td className="px-6 py-4 ">Used</td>
                   <td className="px-6 py-4 ">
-                    <div className="flex justify-center text-green-400 cursor-pointer">
-                      <BiDetail />
+                    <div className="flex justify-center text-red-500 cursor-pointer">
+                      <FaTrashAlt />
                     </div>
                   </td>
                 </tr>
@@ -75,4 +96,4 @@ const Transaksi = () => {
   );
 };
 
-export default Transaksi;
+export default Checkin;

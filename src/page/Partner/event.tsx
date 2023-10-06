@@ -1,11 +1,13 @@
 import { MdEvent } from "react-icons/md";
 import { BiDetail } from "react-icons/bi";
 import AnimatedPage from "../../component/animatedPage";
+import { useNavigate } from "react-router-dom";
 import { Tabs } from "flowbite-react";
 
 const Event = () => {
+  const navigate = useNavigate();
   return (
-    <div className="p-10 h-full bg-bgMain">
+    <div className="p-10 h-full bg-gradient-to-r from-bgTwo from-10% via-gray-700 via-50% to-bgTwo to-100%">
       <AnimatedPage>
         <Tabs.Group aria-label="Tabs with underline" style="underline">
           <Tabs.Item active icon={MdEvent} title="Event Aktif">
@@ -56,7 +58,7 @@ const Event = () => {
                       <td className="px-6 py-4 ">On Progress</td>
                       <td className="px-6 py-4 ">
                         <div className="flex justify-center text-green-400 cursor-pointer">
-                          <BiDetail />
+                          <BiDetail onClick={() => navigate("/myevents/:id")} />
                         </div>
                       </td>
                     </tr>

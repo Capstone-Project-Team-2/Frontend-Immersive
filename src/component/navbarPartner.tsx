@@ -39,14 +39,16 @@ const NavbarPartner: FC<headerProps> = ({ id, name, job, image }) => {
           return "Detail Event";
         case "/validation":
           return "Validation";
-        case "/buat-event":
+        case "/buat-event-partner":
           return "Buat Event";
         case "/ticket":
           return "Ticket";
-        case "/chat":
+        case "/promo":
+          return "Promo";
+        case "/chat-partner":
           return "Chat";
         default:
-          return "Halaman Tidak Ditemukan";
+          return "";
       }
     };
     setPageTitle(getTitleFromPath(location.pathname));
@@ -88,6 +90,14 @@ const NavbarPartner: FC<headerProps> = ({ id, name, job, image }) => {
       <div className=" justify-between items-center">
         <h4 className="text-white text-base font-semibold">{pageTitle}</h4>
       </div>
+      <div className="ms-auto mr-8">
+        <button
+          className="text-white  border border-gray-700 rounded-md shadow-xl p-2 px-4"
+          onClick={() => navigate("/buat-event-partner")}
+        >
+          Buat Event
+        </button>
+      </div>
       <div className="relative inline-block text-left">
         <button
           className="flex items-center space-x-2"
@@ -96,7 +106,7 @@ const NavbarPartner: FC<headerProps> = ({ id, name, job, image }) => {
         >
           <img className="w-12 h-12 rounded-full" src={image} />
           <div className="flex-col justify-start items-start inline-flex ">
-            <h4 className="text-sky-900 text-base font-medium">{name}</h4>
+            <h4 className="text-white text-base font-semibold">{name}</h4>
             <p className="text-neutral-500 text-xs font-medium">{job}</p>
           </div>
           <IoIosArrowDown />
@@ -110,7 +120,7 @@ const NavbarPartner: FC<headerProps> = ({ id, name, job, image }) => {
               aria-labelledby="options-menu"
             >
               <a
-                href="#"
+                onClick={() => navigate("/profil-partner")}
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 role="menuitem"
               >

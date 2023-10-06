@@ -15,7 +15,6 @@ import Dashboard from "./page/Partner/dashboard";
 import Event from "./page/Partner/event";
 import Eventdetail from "./page/Partner/eventdetail";
 import Transaksi from "./page/Partner/transaksi";
-import Ticket from "./page/Partner/ticket";
 import Volunteer from "./page/Partner/volunteer";
 import LoginBuyer from "./page/Buyer/loginBuyer";
 import RegisBuyer from "./page/Buyer/regisBuyer";
@@ -28,11 +27,19 @@ import LoginPartner from "./page/Partner/loginPartner";
 import RegisterPartner from "./page/Partner/registerPartner";
 import ProfilePartner from "./page/Partner/profilePartner";
 import BuatEvent from "./page/Partner/buatEvent";
-import TiketBuyer from './page/Buyer/profile/tiket';
-import RefundBuyer from './page/Buyer/profile/refund';
-import PersonalData from './page/Buyer/profile/personalData';
-import LayoutBuyer from './component/layoutBuyer';        
-
+import TiketBuyer from "./page/Buyer/profile/tiket";
+import RefundBuyer from "./page/Buyer/profile/refund";
+import PersonalData from "./page/Buyer/profile/personalData";
+import LayoutBuyer from "./component/layoutBuyer";
+import TicketDetail from "./page/Partner/ticketDetail";
+import Ticket from "./page/Partner/ticket";
+import Listrefund from "./page/Partner/listrefund";
+import Validation from "./page/Partner/validation";
+import Promo from "./page/Partner/promo";
+import ListPromo from "./page/Partner/listPromo";
+import BuatPromo from "./page/Partner/buatPromo";
+import Checkin from "./page/Partner/checkin";
+import ChatPartner from "./page/Partner/chatPartner";
 
 function App() {
   axios.defaults.baseURL = "https://backendlagi.online";
@@ -70,15 +77,23 @@ function App() {
           {/* Partner */}
           <Route path="/login-partner" element={<LoginPartner />} />
           <Route path="/register-partner" element={<RegisterPartner />} />
-          <Route path="/buat-event" element={<BuatEvent />} />
+          <Route path="/buat-event-partner" element={<BuatEvent />} />
           <Route path="/" element={<Layoutpartner />}>
             <Route path="/dashboard-partner" element={<Dashboard />} />
             <Route path="/profil-partner" element={<ProfilePartner />} />
             <Route path="/myevents" element={<Event />} />
             <Route path="/myevents/:id" element={<Eventdetail />} />
             <Route path="/myevents/:id/transaksi" element={<Transaksi />} />
-            <Route path="/myevents/:id/ticket" element={<Ticket />} />
+            <Route path="/myevents/:id/ticket" element={<TicketDetail />} />
             <Route path="/myevents/:id/volunteer" element={<Volunteer />} />
+            <Route path="/ticket" element={<Ticket />} />
+            <Route path="/ticket-refund" element={<Listrefund />} />
+            <Route path="/validation" element={<Validation />} />
+            <Route path="/validation-checkin" element={<Checkin />} />
+            <Route path="/promo" element={<Promo />} />
+            <Route path="/promo-list" element={<ListPromo />} />
+            <Route path="/buat-promo" element={<BuatPromo />} />
+            <Route path="/chat-partner" element={<ChatPartner />} />
           </Route>
         </Routes>
       </BrowserRouter>

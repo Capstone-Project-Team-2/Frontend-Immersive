@@ -124,7 +124,7 @@ const LoginPartner = () => {
             <div className="flex justify-center pt-3">
               <button
                 type="submit"
-                className="bg-bgBtn hover:bg-blue-700 text-white text-lg font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline mx-auto"
+                className="bg-blue-900 hover:bg-bgBtn text-white text-lg font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline mx-auto"
               >
                 {status ? <LuLoader /> : "Login"}
               </button>

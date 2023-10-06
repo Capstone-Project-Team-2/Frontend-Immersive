@@ -1,6 +1,7 @@
 import Sidebar from "./sidebarPartner";
 import NavbarPartner from "./navbarPartner";
 import { Outlet } from "react-router-dom";
+import fotoorang from "../assets//tony.jpg";
 
 const Layoutpartner = () => {
   return (
@@ -12,9 +13,9 @@ const Layoutpartner = () => {
         <NavbarPartner
           id=""
           title="Presensi"
-          image="src\assets\person.png"
-          job="Manager"
-          name=" Jheni Doe"
+          image={fotoorang}
+          job="Partner"
+          name=" Ujang"
         />
         <div className="flex-1 flex-grow overflow-y-auto w-full bg-gradient-to-r from-bgTwo from-10% via-gray-700 via-50% to-bgOne to-90%">
           <Outlet />
