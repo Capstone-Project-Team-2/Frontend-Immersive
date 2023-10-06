@@ -1,46 +1,46 @@
-import { useFormik } from 'formik';
-import { RegisterAuthBuyer } from '../../auth/yup';
-import axios from 'axios';
-import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
-import { LuLoader } from 'react-icons/lu';
-import { useState } from 'react';
-import fotologin from '../../assets/login.png';
+import { useFormik } from "formik";
+import { RegisterAuthBuyer } from "../../auth/yup";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { LuLoader } from "react-icons/lu";
+import { useState } from "react";
+import fotologin from "../../assets/login.png";
 
 const RegisterPartner = () => {
   const [status, setStatus] = useState(false);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      name: '',
-      email: '',
-      password: '',
+      name: "",
+      email: "",
+      password: "",
     },
     validationSchema: RegisterAuthBuyer,
     onSubmit: (values) => {
       setStatus(true);
       const formData = new FormData();
-      formData.append('name', values.name);
-      formData.append('email', values.email);
-      formData.append('password', values.password);
+      formData.append("name", values.name);
+      formData.append("email", values.email);
+      formData.append("password", values.password);
       axios
         .post(`/partners`, formData, {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            "Content-Type": "multipart/form-data",
           },
         })
         .then((response) => {
           toast.success(response.data.message);
-          console.log('data', response.data.data);
-          navigate('/login-buyer');
+          console.log("data", response.data.data);
+          navigate("/login-partner");
           setStatus(false);
         })
         .catch((error) => {
           if (error.response && error.response.status === 500) {
-            toast.error('Email atau password salah');
+            toast.error("Email atau password salah");
             setStatus(false);
           } else {
-            toast.error('Server tidak merespon. Mohon coba lagi nanti.');
+            toast.error("Server tidak merespon. Mohon coba lagi nanti.");
             setStatus(false);
           }
         });
@@ -70,7 +70,7 @@ const RegisterPartner = () => {
                 className={`bg-gray-50 border ${
                   formik.touched.name && formik.errors.name
                     ? `border-red-800`
-                    : 'border-gray-300 border-2'
+                    : "border-gray-300 border-2"
                 } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
               />
               {formik.touched.name && formik.errors.name ? (
@@ -96,7 +96,7 @@ const RegisterPartner = () => {
                 className={`bg-gray-50 border ${
                   formik.touched.email && formik.errors.email
                     ? `border-red-800`
-                    : 'border-gray-300 border-2'
+                    : "border-gray-300 border-2"
                 } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
               />
               {formik.touched.email && formik.errors.email ? (
@@ -121,7 +121,7 @@ const RegisterPartner = () => {
                 className={`bg-gray-50 border relative ${
                   formik.touched.password && formik.errors.password
                     ? `border-red-800`
-                    : 'border-gray-300 border-2'
+                    : "border-gray-300 border-2"
                 } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
               />
               {formik.touched.password && formik.errors.password ? (
@@ -143,7 +143,7 @@ const RegisterPartner = () => {
                 type="submit"
                 className="bg-blue-900 hover:bg-blue-700 text-white text-lg font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline mx-auto"
               >
-                {status ? <LuLoader /> : 'Register'}
+                {status ? <LuLoader /> : "Register"}
               </button>
             </div>
           </form>

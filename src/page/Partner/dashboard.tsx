@@ -5,7 +5,7 @@ import AnimatedPage from "../../component/animatedPage";
 
 const Dashboard = () => {
   return (
-    <div className="container mx-auto h-full bg-black">
+    <div className="container mx-auto h-full bg-gradient-to-r from-bgTwo from-10% via-gray-700 via-50% to-bgTwo to-100%">
       <AnimatedPage>
         <div className=" grid grid-cols-2 gap-5 mx-5 py-5 items-center">
           <div className=" ">
