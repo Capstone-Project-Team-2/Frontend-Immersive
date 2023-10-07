@@ -30,7 +30,7 @@ const BuatEvent = () => {
 
   return (
     <section className="bg-gray-200 min-h-screen">
-      <NavbarPartner id="event" />
+      <NavbarPartner />
       <AnimatedPage>
         <div className="flex flex-row md:flex-row mt-10 ">
           <div className="w-full">
