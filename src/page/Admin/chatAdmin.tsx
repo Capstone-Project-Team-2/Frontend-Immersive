@@ -1,5 +1,6 @@
 import { MdChat, MdSend } from 'react-icons/md';
 import AnimatedPage from '../../component/animatedPage';
+import { motion } from 'framer-motion';
 import Modal from '../../component/modal';
 import { useState } from 'react';
 

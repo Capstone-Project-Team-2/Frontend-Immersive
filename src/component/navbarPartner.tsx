@@ -1,28 +1,51 @@
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 import { IoIosArrowDown } from "react-icons/io";
+import axios from "axios";
 
-interface headerProps {
-  id: string;
-  title?: string;
-  name?: string;
-  job?: string;
-  image?: string;
-}
-
-const NavbarPartner: FC<headerProps> = ({ id, name, job, image }) => {
+const NavbarPartner = () => {
   const location = useLocation();
   const [pageTitle, setPageTitle] = useState("");
+  const [data, setData] = useState<any>("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
+
+  const token = Cookies.get("token");
+  const partner_id = Cookies.get("id");
+
+  const handleLogout = () => {
+    Cookies.remove("token");
+    Cookies.remove("id");
+    toast.success("Successfully Logout");
+    navigate("/");
+  };
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
+  const get_data = () => {
+    axios
+      .get(`/partners/${partner_id}`, {
+        headers: {
+          Authorization: ` Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setData(res?.data?.data);
+        console.log(res?.data?.data.profile_picture);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   //fungsi ganti title header sesuai setiap halaman
   useEffect(() => {
+    get_data();
     const getTitleFromPath = (pathname: string) => {
       switch (pathname) {
         case "/dashboard-partner":
@@ -102,12 +125,12 @@ const NavbarPartner: FC<headerProps> = ({ id, name, job, image }) => {
         <button
           className="flex items-center space-x-2"
           onClick={toggleDropdown}
-          id={id}
+          id={data?.id}
         >
-          <img className="w-12 h-12 rounded-full" src={image} />
+          <img className="w-12 h-12 rounded-full" src={data?.profile_picture} />
           <div className="flex-col justify-start items-start inline-flex ">
-            <h4 className="text-white text-base font-semibold">{name}</h4>
-            <p className="text-neutral-500 text-xs font-medium">{job}</p>
+            <h4 className="text-white text-base font-semibold">{data?.name}</h4>
+            <p className="text-neutral-500 text-xs font-medium">partner</p>
           </div>
           <IoIosArrowDown />
         </button>
@@ -127,15 +150,9 @@ const NavbarPartner: FC<headerProps> = ({ id, name, job, image }) => {
                 Profile
               </a>
               <a
-                href="#"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 role="menuitem"
-              >
-                Settings
-              </a>
-              <a
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                role="menuitem"
+                onClick={() => handleLogout()}
               >
                 Sign out
               </a>
