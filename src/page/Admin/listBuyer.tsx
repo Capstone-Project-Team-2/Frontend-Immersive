@@ -1,4 +1,3 @@
-import { MdRemoveRedEye } from 'react-icons/md';
 import AnimatedPage from '../../component/animatedPage';
 
 const ListBuyer = () => {
@@ -40,11 +39,7 @@ const ListBuyer = () => {
                   <td className="px-6 py-4">John Doe</td>
                   <td className="px-6 py-4">john@mail.com</td>
                   <td className="px-6 py-4">088192654096</td>
-                  <td className="px-6 py-4 ">
-                    <div className="text-xl pl-8 cursor-pointer">
-                      <MdRemoveRedEye />
-                    </div>
-                  </td>
+                  <td className="px-6 py-4 ">Brazil</td>
                 </tr>
                 <tr className="bg-bgTwo border-y border-slate-700 hover:bg-bgOne text-white ">
                   <td scope="row" className="px-6 py-4 whitespace-nowrap">
@@ -53,11 +48,7 @@ const ListBuyer = () => {
                   <td className="px-6 py-4">Robert</td>
                   <td className="px-6 py-4">robert@mail.com</td>
                   <td className="px-6 py-4">088187205946</td>
-                  <td className="px-6 py-4 ">
-                    <div className="text-xl pl-8 cursor-pointer">
-                      <MdRemoveRedEye />
-                    </div>
-                  </td>
+                  <td className="px-6 py-4 ">Canada</td>
                 </tr>
               </tbody>
             </table>
