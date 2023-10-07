@@ -40,6 +40,7 @@ import ListPromo from "./page/Partner/listPromo";
 import BuatPromo from "./page/Partner/buatPromo";
 import Checkin from "./page/Partner/checkin";
 import ChatPartner from "./page/Partner/chatPartner";
+import About from "./page/Buyer/About";
 
 function App() {
   axios.defaults.baseURL = "https://backendlagi.online";
@@ -57,6 +58,7 @@ function App() {
           <Route path="/detail-event" element={<DetailEvent />} />
           <Route path="/detail-pemesanan" element={<DetailPemesanan />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/about" element={<About />} />
           <Route path="/" element={<LayoutBuyer />}>
             <Route path="/profile-personal" element={<PersonalData />} />
             <Route path="/profile-tiket" element={<TiketBuyer />} />

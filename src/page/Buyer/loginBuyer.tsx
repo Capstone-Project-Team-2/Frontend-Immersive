@@ -115,6 +115,14 @@ const LoginBuyer = () => {
                 </div>
               ) : null}
             </div>
+            <div className='text-center'>
+              <a
+                href="/regis-buyer"
+                className="text-sm cursor-pointer hover:text-blue-500"
+              >
+                Dont have account? register here
+              </a>
+            </div>
             <div className="flex justify-center pt-3">
               <button
                 type="submit"

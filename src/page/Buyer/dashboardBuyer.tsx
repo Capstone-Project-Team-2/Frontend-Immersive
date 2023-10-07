@@ -51,7 +51,7 @@ const DashboardBuyer = () => {
       <h1 className="font-bold text-xl mt-8 mb-4 text-center">EVENT NOW!</h1>
       <div className="m-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          <a href="#">
+          <a href="/detail-event">
             <img
               className="rounded-t-lg w-full h-40 "
               src="https://up2you2.com/wp-content/uploads/2022/11/music_4x.webp"
@@ -59,7 +59,7 @@ const DashboardBuyer = () => {
             />
           </a>
           <div className="p-5">
-            <a href="#">
+            <a href="/detail-event">
               <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Noteworthy technology acquisitions 2021
               </h5>
@@ -85,7 +85,7 @@ const DashboardBuyer = () => {
           </div>
         </div>
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          <a href="#">
+          <a href="/detail-event">
             <img
               className="rounded-t-lg w-full h-40 "
               src="https://www.shutterstock.com/shutterstock/photos/1286805256/display_1500/stock-vector-vector-colorful-music-festival-for-event-banner-and-poster-colorful-geometric-abstract-background-1286805256.jpg"
@@ -93,7 +93,7 @@ const DashboardBuyer = () => {
             />
           </a>
           <div className="p-5">
-            <a href="#">
+            <a href="/detail-event">
               <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Noteworthy technology acquisitions 2021
               </h5>
@@ -119,7 +119,7 @@ const DashboardBuyer = () => {
           </div>
         </div>
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          <a href="#">
+          <a href="/detail-event">
             <img
               className="rounded-t-lg w-full h-40"
               src="https://png.pngtree.com/png-clipart/20210815/original/pngtree-music-festival-creative-gradient-banner-png-image_6639203.jpg"
@@ -127,7 +127,7 @@ const DashboardBuyer = () => {
             />
           </a>
           <div className="p-5">
-            <a href="#">
+            <a href="/detail-event">
               <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Noteworthy technology acquisitions 2021
               </h5>
@@ -161,7 +161,7 @@ const DashboardBuyer = () => {
           More
         </button>
       </div>
-      <div className="bg-blue-600 text-white py-6 text-center">
+      <div className="bg-blue-950 text-white py-6 text-center">
         <h2 className="font-bold text-2xl">About Us</h2>
         <p className="text-lg mt-2">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse ratione
@@ -171,7 +171,7 @@ const DashboardBuyer = () => {
           laudantium mollitia maxime nisi, quisquam iusto illo sed earum omnis
           voluptatum ipsum consequuntur ipsa.
         </p>
-        <button className="bg-blue-950 hover:bg-blue-700 rounded-full my-5 py-3 px-10">
+        <button className="bg-blue-700 hover:bg-blue-950 hover:ring-2 rounded-full my-5 py-3 px-10">
           More
         </button>
       </div>

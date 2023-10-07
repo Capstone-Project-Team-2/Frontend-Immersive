@@ -5,7 +5,7 @@ import { SlCalender } from "react-icons/sl";
 
 const RefundBuyer = () => {
     return (
-        <section>
+        <section className='h-screen'>
             <AnimatedPage>
                 <div className="py-2 w-full bg-gray-200 ">
                     <div className="p-5 text-white ">

@@ -1,12 +1,16 @@
 import React from 'react'
 import logoBuyer from '../assets/logoBuyer1.png';
+import { useNavigate } from 'react-router-dom';
 
 const FootbarBuyer = () => {
+    const navigate = useNavigate();
     return (
         <footer className="bg-blue-950 text-white py-4 mt-10">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="flex items-center space-x-4">
-                    <div className="flex">
+                    <div className="flex cursor-pointer " 
+                    onClick={() => navigate("/")}
+                    >
                         <img src={logoBuyer} alt="Brand Logo" className="w-14" />
                         <div className="text-white items-center pt-2">
                             <p className="font-normal text-xs">Event, easier with</p>
