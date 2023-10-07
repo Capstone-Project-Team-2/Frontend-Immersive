@@ -43,12 +43,13 @@ const Checkout = () => {
                         <div>: uge7394r</div>
                     </div>
                 </div>
-                <div className='font-bold text-center text-xl'>INSTRUKSI
+                <div className='font-bold text-center my-10 text-xl'>INSTRUKSI
                     <div
-                        onClick={handleAtm}
+                        onClick={handleInternet}
+                        className='my-2'
                     >
                         INTERNET BANKING</div>
-                    <div onClick={handleInternet}
+                    <div onClick={handleAtm}
                     >
                         ATM</div>
                 </div>

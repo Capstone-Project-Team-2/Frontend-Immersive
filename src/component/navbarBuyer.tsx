@@ -66,7 +66,7 @@ const NavbarBuyer = () => {
         <img
           src={logoBuyer}
           alt="Brand Logo"
-          className="w-14"
+          className="w-14 cursor-pointer"
           onClick={() => navigate("/")}
         />
         <div className="text-white items-center pt-2">
@@ -96,7 +96,7 @@ const NavbarBuyer = () => {
       <div className="navbar-right flex items-center space-x-4 relative">
         <div className="flex flex-row">
           <div className="text-white mr-2 font-semibold text-xl">
-            {greeting}, {data.name}
+            {greeting}, {data.name ? data.name : "user"}
           </div>
           <div className="relative group" onClick={toggleDropdown}>
             <img
@@ -120,7 +120,7 @@ const NavbarBuyer = () => {
                     Tiket
                   </a>
                   <a
-                    href="#"
+                    href="/about"
                     className="block px-4 py-2 text-sm text-white hover:bg-blue-700"
                     onClick={() => handleLogout()}
                   >

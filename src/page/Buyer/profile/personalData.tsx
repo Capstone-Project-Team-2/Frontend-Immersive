@@ -8,14 +8,19 @@ import toast from "react-hot-toast";
 import { ProfilBuyer } from "../../../auth/yup";
 import Modal from "../../../component/modal";
 import Cookies from "js-cookie";
+import { LuCheckCircle2, LuMinusCircle } from "react-icons/lu";
 
 const PersonalData = () => {
   const [popup, setPopup] = useState<boolean>(false);
+  const [pop, setPop] = useState<boolean>(false);
   const [data, setData] = useState<any>([]);
   console.log(data);
 
   const editbuyer = () => {
     setPopup(!popup);
+  };
+  const opendelete = () => {
+    setPop(!pop);
   };
 
   const buyer_id = Cookies.get("id");
@@ -35,6 +40,19 @@ const PersonalData = () => {
       })
       .catch(() => {
         toast.error("Gagal mendapatkan data");
+      });
+  };
+
+  const handledelete = (id: any) => {
+    axios
+      .delete(`/buyers/${buyer_id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        toast.success(response.data.message);
+      })
+      .catch((error) => {
+        console.log("Maaf gagal untuk delete akun ", error);
       });
   };
 
@@ -82,9 +100,9 @@ const PersonalData = () => {
         });
     },
   });
-  
+
   return (
-    <section>
+    <section className="h-screen">
       <AnimatedPage>
         <div className="py-2 w-full bg-gray-200 ">
           <div className="p-5 text-white ">
@@ -92,37 +110,51 @@ const PersonalData = () => {
               Personal Data
             </h1>
           </div>
-          <div className="shadow-md border-4 my-10 mx-10 flex flex-row justify-between bg-white">
+          <div className="shadow-md border-4 my-10 mx-10 flex flex-col justify-between bg-white">
             <div className="ml-10 mt-10 flex flex-col">
               <img
                 src={data.profile_picture}
                 alt=""
-                className="rounded-full  h-32 w-36"
+                className="rounded-full h-36 w-36"
               />
             </div>
             <div className="flex">
-              <div className="ml-10 mt-10 flex flex-col text-bold">
-                <div className="mt-5">Full Name</div>
-                <div className="mt-8">Email</div>
-                <div className="mt-8">Phone Number</div>
-                <div className="mt-5">Address</div>
-              </div>
-              <div className="ml-10 mt-10 mr-5 flex flex-col">
-                <div className="mt-5">{data.name}</div>
-                <div className="mt-8">{data.email}</div>
-                <div className="mt-8">{data.phone_number}</div>
-                <div className="mt-5">{data.address}</div>
-                <div className="mt-5">
+            <div className="ml-10 mt-10 flex flex-col text-bold">
+              <div className="mt-5">Full Name</div>
+              <div className="mt-8">Email</div>
+              <div className="mt-8">Phone Number</div>
+              <div className="mt-5">Address</div>
+            </div>
+            <div className="ml-10 mt-10 mr-5 flex flex-col">
+              <div className="mt-5">{data.name}</div>
+              <div className="mt-8">{data.email}</div>
+              <div className="mt-8">{data.phone_number}</div>
+              <div className="mt-5">{data.address}</div>
+            </div>
+            </div>
+              <div className="mx-auto my-5 gap-x-5">
+                <span>
                   <Button
-                    id="edit buyer"
-                    label="EDIT"
-                    width="24"
-                    height="10"
+                    id="Add"
+                    label="Edit"
+                    color="bg-bgBtn"
+                    hover="bg-blue-900"
+                    width="36"
                     onClick={() => editbuyer()}
                   />
-                </div>
+                </span>
+                <span className="mx-5">
+                  <Button
+                    id="Add"
+                    label="Delete"
+                    color="bg-red-500"
+                    hover="bg-red-900"
+                    width="36"
+                    onClick={() => opendelete()}
+                  />
+                </span>
               </div>
-            </div>
+
             <Modal isOpen={popup} onClose={() => setPopup(false)}>
               <form onSubmit={formik.handleSubmit}>
                 <div className="w-[30vw] h-full flex flex-col">
@@ -243,6 +275,45 @@ const PersonalData = () => {
                 </div>
               </form>
             </Modal>
+            <div>
+              <Modal isOpen={pop} onClose={() => setPop(false)}>
+                <div className="relative rounded-lg">
+                  <div className="px-10 py-10 flex flex-col space-y-3 ">
+                    <div className="space-y-2 flex flex-col justify-center items-center">
+                      <h3 className="text-xl font-bold text-black">
+                        Delete Profile
+                      </h3>
+                      <p className="text-red-500 text-md">
+                        Are You Sure Delete your account ?
+                      </p>
+                    </div>
+
+                    <div className="flex space-x-5 justify-center ">
+                      <button
+                        type="button"
+                        onClick={() => setPop(false)}
+                        className="flex justify-center items-center text-white bg-green-500 rounded-cardBase font-semibold text-sm px-5 py-2.5 text-center"
+                      >
+                        <span className="mr-2">
+                          <LuMinusCircle size={25} />
+                        </span>
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        onClick={() => handledelete(buyer_id)}
+                        className="flex justify-center items-center  text-white bg-red-500 font-semibold rounded-cardBase text-sm px-8 py-2.5 text-center"
+                      >
+                        <span className="mr-2">
+                          <LuCheckCircle2 size={25} />
+                        </span>
+                        OK
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Modal>
+            </div>
           </div>
         </div>
       </AnimatedPage>

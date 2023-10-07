@@ -43,6 +43,8 @@ import ChatPartner from './page/Partner/chatPartner';
 import LayoutVolunteer from './component/layoutVolunteer';
 import CheckinVolunteer from './page/Volunteer/checkinVolunteer';
 import LoginVolunteer from './page/Volunteer/loginVolunteer';
+import About from "./page/Buyer/About";
+
 
 function App() {
   axios.defaults.baseURL = 'https://backendlagi.online';
@@ -60,6 +62,7 @@ function App() {
           <Route path="/detail-event" element={<DetailEvent />} />
           <Route path="/detail-pemesanan" element={<DetailPemesanan />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/about" element={<About />} />
           <Route path="/" element={<LayoutBuyer />}>
             <Route path="/profile-personal" element={<PersonalData />} />
             <Route path="/profile-tiket" element={<TiketBuyer />} />
