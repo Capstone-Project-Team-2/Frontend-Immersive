@@ -1,15 +1,63 @@
+import { useState } from 'react';
+import profile from '../assets/person.png';
+import { useNavigate } from 'react-router-dom';
+import { IoIosArrowDown } from 'react-icons/io';
+import toast from 'react-hot-toast';
+import Cookies from 'js-cookie';
+
 const NavbarAdmin = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleLogout = () => {
+    Cookies.remove('token');
+    Cookies.remove('id');
+    toast.success('Successfully Logout');
+    navigate('/');
+  };
   return (
-    <div className="shadow-lg w-full bg-bgOne">
-      <div className="flex justify-end mx-6 my-3 items-center ">
-        <div className="cursor-pointer">
-          <img
-            className=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 "
-            src="https://plus.unsplash.com/premium_photo-1664536392779-049ba8fde933?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
-            alt="Bordered avatar"
-          ></img>
-        </div>
-        <h1 className="font-semibold pl-2 text-lg text-white">Admin</h1>
+    <div className="shadow-lg w-full  bg-bgOne flex justify-end py-4 px-4">
+      <div className="relative inline-block text-left">
+        <button
+          className="flex items-center space-x-2"
+          onClick={toggleDropdown}
+        >
+          <img className="w-12 h-12 rounded-full" src={profile} />
+          <div className="flex-col justify-start items-start inline-flex ">
+            <h4 className="text-white text-base font-semibold">Imam</h4>
+            <p className="text-neutral-500 text-xs font-medium">admin</p>
+          </div>
+          <IoIosArrowDown />
+        </button>
+        {dropdownOpen && (
+          <div className="origin-top-right absolute mt-2 w-40 rounded-md shadow-lg bg-slate-300 ring-1 ring-black ring-opacity-5">
+            <div
+              className="py-1"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="options-menu"
+            >
+              <a
+                onClick={() => navigate('/profile-admin')}
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                role="menuitem"
+              >
+                Profile
+              </a>
+              <a
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                role="menuitem"
+                onClick={() => handleLogout()}
+              >
+                Sign out
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
