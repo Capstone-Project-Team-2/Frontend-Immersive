@@ -1,5 +1,4 @@
 import AnimatedPage from '../../component/animatedPage';
-import { MdCheckCircle, MdDisabledByDefault } from 'react-icons/md';
 
 const ListTicket = () => {
   return (
