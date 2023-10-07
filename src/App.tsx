@@ -43,8 +43,8 @@ import ChatPartner from './page/Partner/chatPartner';
 import LayoutVolunteer from './component/layoutVolunteer';
 import CheckinVolunteer from './page/Volunteer/checkinVolunteer';
 import LoginVolunteer from './page/Volunteer/loginVolunteer';
-import About from "./page/Buyer/About";
-
+import About from './page/Buyer/About';
+import ProfileAdmin from './page/Admin/profileAdmin';
 
 function App() {
   axios.defaults.baseURL = 'https://backendlagi.online';
@@ -79,6 +79,7 @@ function App() {
             <Route path="/validation-admin" element={<ValidationAdmin />} />
             <Route path="/list-ticket-admin" element={<ListTicket />} />
             <Route path="/chat-admin" element={<ChatAdmin />} />
+            <Route path="/profile-admin" element={<ProfileAdmin />} />
           </Route>
           {/* Partner */}
           <Route path="/login-partner" element={<LoginPartner />} />
