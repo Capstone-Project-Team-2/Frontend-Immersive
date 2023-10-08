@@ -1,41 +1,72 @@
-import { GiWallet } from 'react-icons/gi';
-import { HiTicket } from 'react-icons/hi2';
-import { MdPeople } from 'react-icons/md';
-import { BsCalculatorFill } from 'react-icons/bs';
-import { IoHandRightSharp } from 'react-icons/io5';
-import { useNavigate } from 'react-router-dom';
-import AnimatedPage from '../../component/animatedPage';
-import foto from '../../assets/poster.png';
+import { GiWallet } from "react-icons/gi";
+import { HiTicket } from "react-icons/hi2";
+import { MdPeople } from "react-icons/md";
+import { BsCalculatorFill } from "react-icons/bs";
+import { IoHandRightSharp } from "react-icons/io5";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
+import AnimatedPage from "../../component/animatedPage";
 
 const Eventdetail = () => {
+  const token = Cookies.get("token");
+  const [data, setData] = useState<any>([]);
+  const eventId = useParams();
   const navigate = useNavigate();
+
+  const volunteer = (event: any) => {
+    navigate(`/myevents/${event}/volunteer`),
+      {
+        state: {
+          id: event.id,
+        },
+      };
+  };
+
+  const getalldata = () => {
+    axios
+      .get(`/events/${eventId.id}`, {
+        headers: { Authorization: "Bearer " + token },
+      })
+      .then((res) => {
+        setData(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getalldata();
+  }, []);
   return (
     <div className="p-10 h-full bg-bgMain text-white">
       <AnimatedPage>
         <div>
-          <h1>Mobile Legends: Bang Bang Sultan Cup Rising Star</h1>
+          <h1 className="text-[24px] font-semibold">{data.name}</h1>
         </div>
         <div className="flex mt-2">
           <div className="w-1/2">
             <div className="">
-              <img src={foto} className="w-full h-full" />
-              <div className="flex gap-10">
+              <img src={data.banner_picture} className="w-full h-full" />
+              <div className="flex flex-col gap-5">
                 <div>
-                  <div>Nama Event</div>
-                  <p>
-                    Mobile Legends: Bang Bang
-                    <br></br>Sultan Cup Rising Star
-                  </p>
-                  <div className="mt-5">Kategori</div>
-                  <div>Tournament</div>
+                  <div className="text-lg font-semibold">Nama Event</div>
+                  <p className="text-md">{data.name}</p>
                 </div>
                 <div>
-                  <div>Date</div>
-                  <div>25/09/2023</div>
+                  <div className="text-lg font-semibold">Date</div>
+                  <div className="text-md">{data.start_date}</div>
                 </div>
                 <div>
-                  <div>Alamat</div>
-                  <div>Digidaw</div>
+                  <div className="text-lg font-semibold">Alamat</div>
+                  <div className="text-md">{data.location}</div>
+                </div>
+                <div>
+                  <div className="text-lg font-semibold">Deskripsi</div>
+                  <div className="text-md">{data.description}</div>
                 </div>
               </div>
             </div>
@@ -60,7 +91,7 @@ const Eventdetail = () => {
                   <div className=" text-yellow-500 w-50 cursor-pointer flex justify-center mt-1 border-r border-gray-500">
                     <HiTicket
                       size={55}
-                      onClick={() => navigate('/myevents/:id/ticket')}
+                      onClick={() => navigate("/myevents/:id/ticket")}
                     />
                   </div>
                 </div>
@@ -78,7 +109,7 @@ const Eventdetail = () => {
                   <div className=" text-green-400 w-50 cursor-pointer flex justify-center mt-1 border-r border-gray-500 ">
                     <BsCalculatorFill
                       size={55}
-                      onClick={() => navigate('/myevents/:id/transaksi')}
+                      onClick={() => navigate("/myevents/:id/transaksi")}
                     />
                   </div>
                 </div>
@@ -111,7 +142,7 @@ const Eventdetail = () => {
                   <div className=" text-orange-300 w-50 cursor-pointer flex justify-center mt-1 border-r border-gray-500 ">
                     <IoHandRightSharp
                       size={55}
-                      onClick={() => navigate('/myevents/:id/volunteer')}
+                      onClick={() => volunteer(data.id)}
                     />
                   </div>
                 </div>
