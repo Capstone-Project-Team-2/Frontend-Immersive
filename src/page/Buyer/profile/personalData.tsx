@@ -88,7 +88,7 @@ const PersonalData = () => {
         })
         .then((response) => {
           toast.success(response.data.message);
-
+          get_data();
           navigate("/profile-personal");
         })
         .catch((error) => {
