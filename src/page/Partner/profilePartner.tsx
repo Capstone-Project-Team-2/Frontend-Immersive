@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { ProfilAuthPartner } from "../../auth/yup";
-import { LuCheckCircle2, LuMinusCircle } from "react-icons/lu";
-import axios from "axios";
-import Cookies from "js-cookie";
-import Button from "../../component/button";
-import AnimatedPage from "../../component/animatedPage";
-import Modal from "../../component/modal";
-import toast from "react-hot-toast";
-import { useFormik } from "formik";
+import { useState, useEffect } from 'react';
+import { ProfilAuthPartner } from '../../auth/yup';
+import { LuCheckCircle2, LuMinusCircle } from 'react-icons/lu';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import Button from '../../component/button';
+import AnimatedPage from '../../component/animatedPage';
+import Modal from '../../component/modal';
+import toast from 'react-hot-toast';
+import { useFormik } from 'formik';
 
 interface profileProps {
   id: string;
@@ -21,26 +21,26 @@ interface profileProps {
 
 const ProfilePartner = () => {
   const [profile, setProfile] = useState<profileProps>({
-    id: "",
-    name: "",
-    start_join: "",
-    email: "",
-    phone_number: "",
-    address: "",
-    profile_picture: "",
+    id: '',
+    name: '',
+    start_join: '',
+    email: '',
+    phone_number: '',
+    address: '',
+    profile_picture: '',
   });
 
   const [popup, setPopup] = useState<boolean>(false);
   const [pop, setPop] = useState<boolean>(false);
   const initialValues = {
-    name: "",
-    email: "",
-    address: "",
-    phone_number: "",
+    name: '',
+    email: '',
+    address: '',
+    phone_number: '',
     photo: null,
   };
-  const token = Cookies.get("token");
-  const id = Cookies.get("id");
+  const token = Cookies.get('token');
+  const id = Cookies.get('id');
   const openedit = () => {
     setPopup(!popup);
   };
@@ -60,17 +60,17 @@ const ProfilePartner = () => {
         setProfile(response?.data?.data);
       })
       .then((error) => {
-        console.log("Error : ", error);
+        console.log('Error : ', error);
       });
   };
   const handleSubmit = async (values: any) => {
     try {
       const formData = new FormData();
-      formData.append("name", values.name);
-      formData.append("email", values.email);
-      formData.append("address", values.address);
-      formData.append("phone_number", values.phone_number);
-      formData.append("profile_picture", values.photo);
+      formData.append('name', values.name);
+      formData.append('email', values.email);
+      formData.append('address', values.address);
+      formData.append('phone_number', values.phone_number);
+      formData.append('profile_picture', values.photo);
 
       // Replace with your API endpoint
       const url = `/partners/${id}`;
@@ -78,16 +78,16 @@ const ProfilePartner = () => {
       // Use Axios to send a PUT request
       const response = await axios.put(url, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
       });
       toast.success(response.data.message);
       setPopup(!popup);
       getProfile();
-      console.log("Photo uploaded successfully:", response.data);
+      console.log('Photo uploaded successfully:', response.data);
     } catch (error) {
-      console.error("Error uploading photo:", error);
+      console.error('Error uploading photo:', error);
     }
   };
   const formik = useFormik({
@@ -105,7 +105,7 @@ const ProfilePartner = () => {
         toast.success(response.data.message);
       })
       .catch((error) => {
-        console.log("Maaf gagal untuk delete akun ", error);
+        console.log('Maaf gagal untuk delete akun ', error);
       });
   };
 
@@ -197,7 +197,7 @@ const ProfilePartner = () => {
                       className={`bg-gray-50 border ${
                         formik.touched.name && formik.errors.name
                           ? `border-red-800`
-                          : "border-gray-300 border-2"
+                          : 'border-gray-300 border-2'
                       } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
                     />
                     {formik.touched.name && formik.errors.name ? (
@@ -223,7 +223,7 @@ const ProfilePartner = () => {
                       className={`bg-gray-50 border ${
                         formik.touched.email && formik.errors.email
                           ? `border-red-800`
-                          : "border-gray-300 border-2"
+                          : 'border-gray-300 border-2'
                       } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
                     />
                     {formik.touched.email && formik.errors.email ? (
@@ -249,7 +249,7 @@ const ProfilePartner = () => {
                       className={`bg-gray-50 border ${
                         formik.touched.address && formik.errors.address
                           ? `border-red-800`
-                          : "border-gray-300 border-2"
+                          : 'border-gray-300 border-2'
                       } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
                     />
                     {formik.touched.address && formik.errors.address ? (
@@ -276,7 +276,7 @@ const ProfilePartner = () => {
                         formik.touched.phone_number &&
                         formik.errors.phone_number
                           ? `border-red-800`
-                          : "border-gray-300 border-2"
+                          : 'border-gray-300 border-2'
                       } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
                     />
                     {formik.touched.phone_number &&
@@ -299,7 +299,7 @@ const ProfilePartner = () => {
                       type="file"
                       onChange={(event) => {
                         formik.setFieldValue(
-                          "photo",
+                          'photo',
                           event.currentTarget.files
                             ? event.currentTarget.files[0]
                             : null

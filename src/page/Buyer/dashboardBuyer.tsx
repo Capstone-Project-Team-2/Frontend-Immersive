@@ -6,7 +6,6 @@ import Modal from '../../component/modal';
 import Button from '../../component/button';
 
 const DashboardBuyer = () => {
-
   const navigate = useNavigate();
   const [popupSignIn, setPopupSignIn] = useState<boolean>(false);
   const [popupSignUp, setPopupSignUp] = useState<boolean>(false);
@@ -18,7 +17,6 @@ const DashboardBuyer = () => {
   const handleSignUp = () => {
     setPopupSignUp(!popupSignUp);
   };
-
 
   return (
     <section>
@@ -34,15 +32,16 @@ const DashboardBuyer = () => {
           <div>Pencarian tiket event semakin mudah di E V V E.</div>
           <div>Mulai Sekarang!</div>
           <div className="mt-4 flex space-x-4 ">
-            <button className="bg-blue-950 hover:bg-blue-700 text-white font-normal text-lg py-2 px-4 rounded-lg"
+            <button
+              className="bg-blue-950 hover:bg-blue-700 text-white font-normal text-lg py-2 px-4 rounded-lg"
               onClick={() => handleSignIn()}
-              >
+            >
               Sign In
             </button>
-            <button className="bg-blue-950 hover:bg-blue-700 text-white font-normal text-lg py-2 px-4 rounded-lg"
+            <button
+              className="bg-blue-950 hover:bg-blue-700 text-white font-normal text-lg py-2 px-4 rounded-lg"
               onClick={() => handleSignUp()}
-              >
-
+            >
               Sign Up
             </button>
           </div>
@@ -161,15 +160,15 @@ const DashboardBuyer = () => {
           More
         </button>
       </div>
-      <div className="bg-blue-950 text-white py-6 text-center">
+      <div className="bg-blue-950 text-white py-6 text-center px-24">
         <h2 className="font-bold text-2xl">About Us</h2>
         <p className="text-lg mt-2">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse ratione
-          harum repudiandae ea sed ab ut cum officiis. Dolorem, numquam
-          molestiae repudiandae magnam ducimus incidunt, quaerat deleniti
-          exercitationem esse odio aperiam, voluptatem et? Laborum error hic
-          laudantium mollitia maxime nisi, quisquam iusto illo sed earum omnis
-          voluptatum ipsum consequuntur ipsa.
+          Kami adalah sebuah platform yang didedikasikan untuk menghadirkan
+          kemudahan dalam membeli tiket dan menikmati berbagai acara hiburan
+          favorit Anda. Kami percaya bahwa hiburan adalah bagian penting dari
+          kehidupan, dan itulah mengapa kami berusaha keras untuk membuat
+          pengalaman membeli tiket dan menghadiri event menjadi lebih sederhana,
+          aman, dan menghibur.
         </p>
         <button className="bg-blue-700 hover:bg-blue-950 hover:ring-2 rounded-full my-5 py-3 px-10">
           More
@@ -219,13 +218,21 @@ const DashboardBuyer = () => {
             SignIn as
           </div>
           <div className="mx-auto mt-5">
-            <Button id="Add" label="BUYER" color="bg-gray-800" width="40"  
-            onClick={() => navigate("/login-buyer")} 
+            <Button
+              id="Add"
+              label="BUYER"
+              color="bg-gray-800"
+              width="40"
+              onClick={() => navigate('/login-buyer')}
             />
           </div>
           <div className="mx-auto mt-5">
-            <Button id="Add" label="PARTNER" color="bg-gray-800" width="40" 
-            onClick={() => navigate("/login-partner")} 
+            <Button
+              id="Add"
+              label="PARTNER"
+              color="bg-gray-800"
+              width="40"
+              onClick={() => navigate('/login-partner')}
             />
           </div>
         </div>
@@ -236,13 +243,21 @@ const DashboardBuyer = () => {
             SignUp as
           </div>
           <div className="mx-auto mt-5">
-            <Button id="Add" label="BUYER" color="bg-gray-800" width="40"  
-            onClick={() => navigate("/regis-buyer")} 
+            <Button
+              id="Add"
+              label="BUYER"
+              color="bg-gray-800"
+              width="40"
+              onClick={() => navigate('/regis-buyer')}
             />
           </div>
           <div className="mx-auto mt-5">
-            <Button id="Add" label="PARTNER" color="bg-gray-800" width="40" 
-            onClick={() => navigate("/register-partner")} 
+            <Button
+              id="Add"
+              label="PARTNER"
+              color="bg-gray-800"
+              width="40"
+              onClick={() => navigate('/register-partner')}
             />
           </div>
         </div>

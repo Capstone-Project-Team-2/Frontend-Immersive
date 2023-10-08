@@ -1,22 +1,22 @@
-import { useFormik } from "formik";
-import { ProfilAuthPartner } from "../../auth/yup";
-import AnimatedPage from "../../component/animatedPage";
+import { useFormik } from 'formik';
+import { ProfilAuthPartner } from '../../auth/yup';
+import AnimatedPage from '../../component/animatedPage';
 
 const BuatPromo = () => {
   const handleSubmit = () => {};
   const formik = useFormik({
     initialValues: {
-      name: "",
-      email: "",
-      address: "",
-      phone_number: "",
+      name: '',
+      email: '',
+      address: '',
+      phone_number: '',
       photo: null,
     },
     validationSchema: ProfilAuthPartner,
     onSubmit: handleSubmit,
   });
   return (
-    <div className="p-2 px-4 h-full bg-gradient-to-r from-bgTwo from-10% via-gray-700 via-50% to-bgTwo to-100%">
+    <div className="p-2 px-4 h-full bg-bgMain">
       <AnimatedPage>
         <div className="py-2 w-full bg-bgOne rounded-lg">
           <div className="px-5 text-white ">
@@ -46,7 +46,7 @@ const BuatPromo = () => {
                       className={`bg-gray-50 border ${
                         formik.touched.name && formik.errors.name
                           ? `border-red-800`
-                          : "border-gray-300 border-2"
+                          : 'border-gray-300 border-2'
                       } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 h-10 block w-full`}
                     />
                     {formik.touched.name && formik.errors.name ? (
@@ -72,7 +72,7 @@ const BuatPromo = () => {
                       className={`bg-gray-50 border ${
                         formik.touched.email && formik.errors.email
                           ? `border-red-800`
-                          : "border-gray-300 border-2"
+                          : 'border-gray-300 border-2'
                       } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full h-10`}
                     />
                     {formik.touched.email && formik.errors.email ? (
@@ -117,7 +117,7 @@ const BuatPromo = () => {
                         className={`bg-gray-50 border ${
                           formik.touched.address && formik.errors.address
                             ? `border-red-800`
-                            : "border-gray-300 border-2"
+                            : 'border-gray-300 border-2'
                         } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full h-10`}
                       />
                       {formik.touched.address && formik.errors.address ? (
@@ -144,7 +144,7 @@ const BuatPromo = () => {
                       className={`bg-gray-50 border ${
                         formik.touched.address && formik.errors.address
                           ? `border-red-800`
-                          : "border-gray-300 border-2"
+                          : 'border-gray-300 border-2'
                       } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full h-10`}
                     />
                     {formik.touched.address && formik.errors.address ? (
@@ -173,7 +173,7 @@ const BuatPromo = () => {
                         formik.touched.phone_number &&
                         formik.errors.phone_number
                           ? `border-red-800`
-                          : "border-gray-300 border-2"
+                          : 'border-gray-300 border-2'
                       } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full h-10`}
                     />
                     {formik.touched.phone_number &&
@@ -201,7 +201,7 @@ const BuatPromo = () => {
                         formik.touched.phone_number &&
                         formik.errors.phone_number
                           ? `border-red-800`
-                          : "border-gray-300 border-2"
+                          : 'border-gray-300 border-2'
                       } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full h-10`}
                     />
                     {formik.touched.phone_number &&
@@ -229,7 +229,7 @@ const BuatPromo = () => {
                         className={`bg-gray-50 border ${
                           formik.touched.address && formik.errors.address
                             ? `border-red-800`
-                            : "border-gray-300 border-2"
+                            : 'border-gray-300 border-2'
                         } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full h-10`}
                       />
                       {formik.touched.address && formik.errors.address ? (
@@ -255,7 +255,7 @@ const BuatPromo = () => {
                         className={`bg-gray-50 border ${
                           formik.touched.address && formik.errors.address
                             ? `border-red-800`
-                            : "border-gray-300 border-2"
+                            : 'border-gray-300 border-2'
                         } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full h-10`}
                       />
                       {formik.touched.address && formik.errors.address ? (
@@ -283,7 +283,7 @@ const BuatPromo = () => {
                         formik.touched.phone_number &&
                         formik.errors.phone_number
                           ? `border-red-800`
-                          : "border-gray-300 border-2"
+                          : 'border-gray-300 border-2'
                       } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full h-10`}
                     />
                     {formik.touched.phone_number &&

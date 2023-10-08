@@ -1,16 +1,16 @@
-import { GiWallet } from "react-icons/gi";
-import { HiTicket } from "react-icons/hi2";
-import { MdPeople } from "react-icons/md";
-import { BsCalculatorFill } from "react-icons/bs";
-import { IoHandRightSharp } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
-import AnimatedPage from "../../component/animatedPage";
-import foto from "../../assets/poster.png";
+import { GiWallet } from 'react-icons/gi';
+import { HiTicket } from 'react-icons/hi2';
+import { MdPeople } from 'react-icons/md';
+import { BsCalculatorFill } from 'react-icons/bs';
+import { IoHandRightSharp } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
+import AnimatedPage from '../../component/animatedPage';
+import foto from '../../assets/poster.png';
 
 const Eventdetail = () => {
   const navigate = useNavigate();
   return (
-    <div className="p-10 h-full bg-gradient-to-r from-bgTwo from-10% via-gray-700 via-50% to-bgTwo to-100% text-white">
+    <div className="p-10 h-full bg-bgMain text-white">
       <AnimatedPage>
         <div>
           <h1>Mobile Legends: Bang Bang Sultan Cup Rising Star</h1>
@@ -60,7 +60,7 @@ const Eventdetail = () => {
                   <div className=" text-yellow-500 w-50 cursor-pointer flex justify-center mt-1 border-r border-gray-500">
                     <HiTicket
                       size={55}
-                      onClick={() => navigate("/myevents/:id/ticket")}
+                      onClick={() => navigate('/myevents/:id/ticket')}
                     />
                   </div>
                 </div>
@@ -78,7 +78,7 @@ const Eventdetail = () => {
                   <div className=" text-green-400 w-50 cursor-pointer flex justify-center mt-1 border-r border-gray-500 ">
                     <BsCalculatorFill
                       size={55}
-                      onClick={() => navigate("/myevents/:id/transaksi")}
+                      onClick={() => navigate('/myevents/:id/transaksi')}
                     />
                   </div>
                 </div>
@@ -111,7 +111,7 @@ const Eventdetail = () => {
                   <div className=" text-orange-300 w-50 cursor-pointer flex justify-center mt-1 border-r border-gray-500 ">
                     <IoHandRightSharp
                       size={55}
-                      onClick={() => navigate("/myevents/:id/volunteer")}
+                      onClick={() => navigate('/myevents/:id/volunteer')}
                     />
                   </div>
                 </div>
