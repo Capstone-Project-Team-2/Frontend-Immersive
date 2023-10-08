@@ -1,7 +1,7 @@
-import { MdChat, MdSend } from "react-icons/md";
-import AnimatedPage from "../../component/animatedPage";
-import Modal from "../../component/modal";
-import { useState } from "react";
+import { MdChat, MdSend } from 'react-icons/md';
+import AnimatedPage from '../../component/animatedPage';
+import Modal from '../../component/modal';
+import { useState } from 'react';
 
 const ChatPartner = () => {
   const [popup, setPopup] = useState<boolean>(false);
@@ -13,7 +13,7 @@ const ChatPartner = () => {
   return (
     <div className="p-10 w-full h-screen">
       <AnimatedPage>
-        <div className="py-2 w-full bg-gradient-to-r from-bgTwo from-10% via-gray-700 via-50% to-bgTwo to-100% rounded-lg">
+        <div className="py-2 w-full bg-bgMain rounded-lg">
           <div className="p-5 text-white ">
             <h1 className="font-semibold text-lg underline underline-offset-8">
               Chat

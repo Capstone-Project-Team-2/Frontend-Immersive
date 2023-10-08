@@ -1,13 +1,13 @@
-import { MdEvent } from "react-icons/md";
-import { BiDetail } from "react-icons/bi";
-import AnimatedPage from "../../component/animatedPage";
-import { Tabs } from "flowbite-react";
-import { useNavigate } from "react-router-dom";
+import { MdEvent } from 'react-icons/md';
+import { BiDetail } from 'react-icons/bi';
+import AnimatedPage from '../../component/animatedPage';
+import { Tabs } from 'flowbite-react';
+import { useNavigate } from 'react-router-dom';
 
 const Ticket = () => {
   const navigate = useNavigate();
   return (
-    <div className="p-10 h-full bg-gradient-to-r from-bgTwo from-10% via-gray-700 via-50% to-bgTwo to-100%">
+    <div className="p-10 h-full bg-bgMain">
       <AnimatedPage>
         <Tabs.Group aria-label="Tabs with underline" style="underline">
           <Tabs.Item active icon={MdEvent} title="Event Aktif">
@@ -59,7 +59,7 @@ const Ticket = () => {
                       <td className="px-6 py-4 ">
                         <div className="flex justify-center text-green-400 cursor-pointer">
                           <BiDetail
-                            onClick={() => navigate("/ticket-refund")}
+                            onClick={() => navigate('/ticket-refund')}
                           />
                         </div>
                       </td>

@@ -3,7 +3,7 @@ import profile from '../assets/person.png';
 import { useNavigate } from 'react-router-dom';
 import { IoIosArrowDown } from 'react-icons/io';
 import toast from 'react-hot-toast';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
 const NavbarAdmin = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -14,10 +14,10 @@ const NavbarAdmin = () => {
   };
 
   const handleLogout = () => {
-    Cookies.remove('token');
-    Cookies.remove('id');
+    // Cookies.remove('token');
+    // Cookies.remove('id');
     toast.success('Successfully Logout');
-    navigate('/');
+    navigate('/login-admin');
   };
   return (
     <div className="shadow-lg w-full  bg-bgOne flex justify-end py-4 px-4">

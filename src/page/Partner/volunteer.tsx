@@ -1,9 +1,9 @@
-import { FaTrashAlt } from "react-icons/fa";
-import { BiDetail } from "react-icons/bi";
-import AnimatedPage from "../../component/animatedPage";
-import Button from "../../component/button";
-import Modal from "../../component/modal";
-import { useState } from "react";
+import { FaTrashAlt } from 'react-icons/fa';
+import { BiDetail } from 'react-icons/bi';
+import AnimatedPage from '../../component/animatedPage';
+import Button from '../../component/button';
+import Modal from '../../component/modal';
+import { useState } from 'react';
 
 const Volunteer = () => {
   const [popup, setPopup] = useState<boolean>(false);
@@ -12,7 +12,7 @@ const Volunteer = () => {
     setPopup(!popup);
   };
   return (
-    <div className="p-10 h-full bg-gradient-to-r from-bgTwo from-10% via-gray-700 via-50% to-bgTwo to-100%">
+    <div className="p-10 h-full bg-bgMain">
       <AnimatedPage>
         <div className="py-2 w-full bg-bgTwo rounded-lg">
           <div className="p-5 text-white ">
