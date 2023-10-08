@@ -1,7 +1,7 @@
-import Sidebar from './sidebarPartner';
-import NavbarPartner from './navbarPartner';
-import { Outlet } from 'react-router-dom';
-import fotoorang from '../assets//tony.jpg';
+import Sidebar from "./sidebarPartner";
+import NavbarPartner from "./navbarPartner";
+import { Outlet } from "react-router-dom";
+import fotoorang from "../assets//tony.jpg";
 
 const Layoutpartner = () => {
   return (
@@ -11,7 +11,7 @@ const Layoutpartner = () => {
       </div>
       <div className="w-full flex flex-col bg-bgOne">
         <NavbarPartner
-          id=""
+          id="2222"
           title="Presensi"
           image={fotoorang}
           job="Partner"

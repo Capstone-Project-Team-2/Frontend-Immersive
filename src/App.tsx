@@ -47,8 +47,9 @@ import About from './page/Buyer/About';
 import ProfileAdmin from './page/Admin/profileAdmin';
 import ListAdmin from './page/Admin/listAdmin';
 
+
 function App() {
-  axios.defaults.baseURL = 'https://backendlagi.online';
+  axios.defaults.baseURL = "https://backendlagi.online";
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />

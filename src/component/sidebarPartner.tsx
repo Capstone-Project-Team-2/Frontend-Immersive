@@ -35,7 +35,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-[70vw]">
       <div
         className={` ${
           open ? "w-64" : "w-20 "
