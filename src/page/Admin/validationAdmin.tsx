@@ -1,7 +1,50 @@
 import AnimatedPage from '../../component/animatedPage';
 import { MdCheckCircle, MdDisabledByDefault } from 'react-icons/md';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import Cookies from 'js-cookie';
 
 const ValidationAdmin = () => {
+  const [data, setData] = useState([]);
+  const token = Cookies.get('token');
+
+  const getData = () => {
+    axios
+      .get(`/events`)
+      .then((res) => {
+        setData(res?.data?.data);
+        console.log(res?.data?.data);
+      })
+      .catch(() => {
+        toast.error('Gagal mendapatkan data');
+      });
+  };
+
+  const handleValidation = (eventId, validationStatus) => {
+    axios
+      .put(
+        `/events/validate/${eventId}`,
+        {
+          validation_status: validationStatus,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(() => {
+        getData();
+      })
+      .catch(() => {
+        toast.error('Gagal memvalidasi event');
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className="p-10 w-full h-screen">
       <AnimatedPage>
@@ -22,7 +65,7 @@ const ValidationAdmin = () => {
                     Name Event
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Category
+                    Name Partner
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Start Date
@@ -31,53 +74,49 @@ const ValidationAdmin = () => {
                     End Date
                   </th>
                   <th scope="col" className="px-6 py-3">
+                    Status
+                  </th>
+                  <th scope="col" className="px-6 py-3">
                     Action
                   </th>
                 </tr>
               </thead>
               <tbody className="text-white ">
-                <tr className="bg-bgTwo border-y border-slate-700 hover:bg-bgOne ">
-                  <td scope="row" className="px-6 py-4 whitespace-nowrap">
-                    1
-                  </td>
-                  <td className="px-6 py-4">
-                    Mobile Legends: Bang Bang Sultan Cup Rising Star
-                  </td>
-                  <td className="px-6 py-4">Tournament</td>
-                  <td className="px-6 py-4">12/09/23</td>
-                  <td className="px-6 py-4">17/09/23</td>
-                  <td className="px-6 py-4 ">
-                    <div className="flex gap-7">
-                      <span className="text-2xl text-green-400 cursor-pointer">
-                        <MdCheckCircle />
-                      </span>
-                      <span className="text-2xl text-red-400 cursor-pointer">
-                        <MdDisabledByDefault />
-                      </span>
-                    </div>
-                  </td>
-                </tr>
-                <tr className="bg-bgTwo border-y border-slate-700 hover:bg-bgOne ">
-                  <td scope="row" className="px-6 py-4 whitespace-nowrap">
-                    2
-                  </td>
-                  <td className="px-6 py-4">
-                    Bergembira Bersama Musik Festival
-                  </td>
-                  <td className="px-6 py-4">Music</td>
-                  <td className="px-6 py-4">12/09/23</td>
-                  <td className="px-6 py-4">17/09/23</td>
-                  <td className="px-6 py-4 ">
-                    <div className="flex gap-7">
-                      <span className="text-2xl text-green-400 cursor-pointer">
-                        <MdCheckCircle />
-                      </span>
-                      <span className="text-2xl text-red-400 cursor-pointer">
-                        <MdDisabledByDefault />
-                      </span>
-                    </div>
-                  </td>
-                </tr>
+                {data.map((item: any, index: any) => {
+                  return (
+                    <tr
+                      key={index}
+                      className="bg-bgTwo border-y border-slate-700 hover:bg-bgOne "
+                    >
+                      <td scope="row" className="px-6 py-4 whitespace-nowrap">
+                        {index + 1}
+                      </td>
+                      <td className="px-6 py-4">{item.name}</td>
+                      <td className="px-6 py-4">{item.partner.name}</td>
+                      <td className="px-6 py-4">{item.start_date}</td>
+                      <td className="px-6 py-4">{item.end_date}</td>
+                      <td className="px-6 py-4 ">{item.validation_status}</td>
+                      <td className="px-6 py-4 ">
+                        <div className="flex gap-7">
+                          <span
+                            onClick={() => handleValidation(item.id, 'Valid')}
+                            className="text-2xl text-green-400 cursor-pointer"
+                          >
+                            <MdCheckCircle />
+                          </span>
+                          <span
+                            onClick={() =>
+                              handleValidation(item.id, 'Not Valid')
+                            }
+                            className="text-2xl text-red-400 cursor-pointer"
+                          >
+                            <MdDisabledByDefault />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

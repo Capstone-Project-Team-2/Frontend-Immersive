@@ -1,6 +1,27 @@
+import { useState, useEffect } from 'react';
 import AnimatedPage from '../../component/animatedPage';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const ListEvent = () => {
+  const [data, setData] = useState([]);
+
+  const getData = () => {
+    axios
+      .get(`/events`)
+      .then((res) => {
+        setData(res?.data?.data);
+        console.log(res?.data?.data);
+      })
+      .catch(() => {
+        toast.error('Gagal mendapatkan data');
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className="p-10 w-full h-screen">
       <AnimatedPage>
@@ -21,7 +42,7 @@ const ListEvent = () => {
                     Name Event
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Category
+                    Name Partner
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Start Date
@@ -32,50 +53,50 @@ const ListEvent = () => {
                   <th scope="col" className="px-6 py-3">
                     Status
                   </th>
-                  <th scope="col" className="px-6 py-3">
-                    Action
-                  </th>
                 </tr>
               </thead>
               <tbody className="text-white ">
-                <tr className="bg-bgTwo border-y border-slate-700 hover:bg-bgOne ">
-                  <td scope="row" className="px-6 py-4 whitespace-nowrap">
-                    1
-                  </td>
-                  <td className="px-6 py-4">
-                    Mobile Legends: Bang Bang Sultan Cup Rising Star
-                  </td>
-                  <td className="px-6 py-4">Tournament</td>
-                  <td className="px-6 py-4">12/09/23</td>
-                  <td className="px-6 py-4">17/09/23</td>
-                  <td className="px-6 py-4 ">On Progress</td>
-                  <td className="px-6 py-4 ">
-                    <div>
-                      <button className="bg-bgBtn hover: px-4 py-2  rounded-md">
-                        Details
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr className="bg-bgTwo border-y border-slate-700 hover:bg-bgOne ">
-                  <td scope="row" className="px-6 py-4 whitespace-nowrap">
-                    2
-                  </td>
-                  <td className="px-6 py-4">
-                    Bergembira Bersama Musik Festival
-                  </td>
-                  <td className="px-6 py-4">Music</td>
-                  <td className="px-6 py-4">12/09/23</td>
-                  <td className="px-6 py-4">17/09/23</td>
-                  <td className="px-6 py-4 ">Done</td>
-                  <td className="px-6 py-4 ">
-                    <div>
-                      <button className="bg-bgBtn px-4 py-2  rounded-md">
-                        Details
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+                {data.map((item: any, index: any) => {
+                  const startDateParts = item.start_date
+                    .split(' ')[0]
+                    .split('-');
+                  const startDate = new Date(
+                    `${startDateParts[2]}-${startDateParts[1]}-${startDateParts[0]}`
+                  );
+
+                  const endDateParts = item.end_date.split(' ')[0].split('-');
+                  const endDate = new Date(
+                    `${endDateParts[2]}-${endDateParts[1]}-${endDateParts[0]}`
+                  );
+
+                  const currentDate = new Date();
+
+                  let status = 'On Progress';
+                  if (currentDate > endDate) {
+                    status = 'Done';
+                  } else if (currentDate < startDate) {
+                    status = 'Not Yet';
+                  }
+
+                  const dateStart = item.start_date.split(' ')[0];
+                  const dateEnd = item.end_date.split(' ')[0];
+
+                  return (
+                    <tr
+                      key={index}
+                      className="bg-bgTwo border-y border-slate-700 hover:bg-bgOne "
+                    >
+                      <td scope="row" className="px-6 py-4 whitespace-nowrap">
+                        {index + 1}
+                      </td>
+                      <td className="px-6 py-4">{item.name}</td>
+                      <td className="px-6 py-4">{item.partner.name}</td>
+                      <td className="px-6 py-4">{dateStart}</td>
+                      <td className="px-6 py-4">{dateEnd}</td>
+                      <td className="px-6 py-4 ">{status}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

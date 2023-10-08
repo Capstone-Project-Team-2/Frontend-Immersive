@@ -5,16 +5,19 @@ import {
   MdPeople,
   MdEvent,
   MdChat,
+  MdPersonAdd,
 } from 'react-icons/md';
 import { SiSymantec } from 'react-icons/si';
 import { HiTicket } from 'react-icons/hi2';
 import logoAdmin from '../assets/logoAdmin1.png';
 import slide from '../assets/control.png';
 import { useState } from 'react';
+import Cookies from 'js-cookie';
 
 const SidebarAdmin = () => {
   const location = useLocation();
   const [open, setOpen] = useState(true);
+  const role = Cookies.get('role');
   const sideLink = [
     {
       to: '/dashboard-admin',
@@ -51,6 +54,11 @@ const SidebarAdmin = () => {
       url: <MdChat />,
       name: 'Chat',
     },
+    {
+      to: '/list-admin',
+      url: <MdPersonAdd />,
+      name: 'List Admin',
+    },
   ];
 
   return (
@@ -73,6 +81,9 @@ const SidebarAdmin = () => {
           />
         </div>
         {sideLink.map((element, index) => {
+          if (element.to === '/list-admin' && role == 'Admin') {
+            return null;
+          }
           return (
             <div key={index}>
               <div className="space-y-2 font-medium">
