@@ -1,7 +1,56 @@
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { LuLoader } from 'react-icons/lu';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { useFormik } from 'formik';
+import { LoginAuthBuyer } from '../../auth/yup';
 
 const LoginAdmin = () => {
+  const [status, setStatus] = useState(false);
   const navigate = useNavigate();
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: LoginAuthBuyer,
+    onSubmit: (values) => {
+      setStatus(true);
+      axios
+        .post(`/admins/login`, {
+          email: values.email,
+          password: values.password,
+        })
+        .then((response) => {
+          toast.success(response.data.message);
+          console.log;
+          Cookies.set('token', response.data.data.token);
+          Cookies.set('id', response.data.data.id);
+          Cookies.set('name', response.data.data.name);
+          Cookies.set('role', response.data.data.role);
+          navigate('/dashboard-admin');
+          setStatus(false);
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 500) {
+            toast.error('Email atau password salah');
+            setStatus(false);
+          } else {
+            toast.error('Server tidak merespon. Mohon coba lagi nanti.');
+            setStatus(false);
+          }
+        });
+    },
+  });
+
+  useEffect(() => {
+    if (Cookies.get('token')) {
+      navigate('/dashboard-admin');
+    }
+  }, []);
+
   return (
     <section>
       <div className="flex h-screen">
@@ -25,32 +74,64 @@ const LoginAdmin = () => {
                 Login Admin
               </h1>
             </div>
-            <form className="space-y-4 md:space-y-8">
-              <div>
-                <label className=" mb-2 text-lg font-semibold ">Username</label>
+            <form onSubmit={formik.handleSubmit}>
+              <div className="mb-4">
+                <label
+                  htmlFor="email"
+                  className="block text-gray-700 text-sm font-bold mb-2 pt-2"
+                >
+                  Email:
+                </label>
                 <input
                   type="text"
-                  name="username"
+                  name="email"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  placeholder="Enter your email"
                   autoComplete="off"
-                  className={`text-gray-900  focus:outline-none focus:border-gray-900 block w-full p-2`}
+                  className={`bg-gray-50 border ${
+                    formik.touched.email && formik.errors.email
+                      ? `border-red-800`
+                      : 'border-gray-300 border-2'
+                  } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
                 />
+                {formik.touched.email && formik.errors.email ? (
+                  <div className="text-red-800 absolute focus:outline-red-800 text-sm font-semibold">
+                    {formik.errors.email}
+                  </div>
+                ) : null}
               </div>
-              <div>
-                <label className="mb-2 text-lg font-semibold ">Password</label>
-                <div className="relative">
-                  <input
-                    type="password"
-                    name="password"
-                    className={`text-gray-900  focus:outline-none focus:border-gray-900 block w-full p-2`}
-                  />
-                </div>
-              </div>
-              <div className=" flex justify-center">
-                <button
-                  onClick={() => navigate('/dashboard-admin')}
-                  className="bg-bgBtn px-14 py-2.5 rounded-lg text-white font-bold text-xl hover:bg-bgHov  "
+              <div className="mb-4">
+                <label
+                  htmlFor="password"
+                  className="block text-gray-700 text-sm font-bold mb-2 pt-2"
                 >
-                  Login
+                  Password:
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  placeholder="Enter your password"
+                  className={`bg-gray-50 border relative ${
+                    formik.touched.password && formik.errors.password
+                      ? `border-red-800`
+                      : 'border-gray-300 border-2'
+                  } border-gray-300 text-gray-900  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
+                />
+                {formik.touched.password && formik.errors.password ? (
+                  <div className="text-red-800 absolute text-sm font-semibold">
+                    {formik.errors.password}
+                  </div>
+                ) : null}
+              </div>
+              <div className="flex justify-center pt-3">
+                <button
+                  type="submit"
+                  className="bg-blue-900 hover:bg-blue-700 text-white text-lg font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline mx-auto"
+                >
+                  {status ? <LuLoader /> : 'Login'}
                 </button>
               </div>
             </form>

@@ -1,6 +1,5 @@
 import { MdChat, MdSend } from 'react-icons/md';
 import AnimatedPage from '../../component/animatedPage';
-import { motion } from 'framer-motion';
 import Modal from '../../component/modal';
 import { useState } from 'react';
 
@@ -50,7 +49,7 @@ const ChatAdmin = () => {
                     1
                   </td>
                   <td className="px-6 py-4">John Doe</td>
-                  <td className="px-6 py-4">Buyer</td>
+                  <td className="px-6 py-4">Partner</td>
                   <td className="px-6 py-4">088192654096</td>
                   <td className="px-6 py-4">13/10/2023</td>
                   <td className="px-6 py-4 ">

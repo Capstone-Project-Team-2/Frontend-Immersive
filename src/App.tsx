@@ -45,6 +45,7 @@ import CheckinVolunteer from './page/Volunteer/checkinVolunteer';
 import LoginVolunteer from './page/Volunteer/loginVolunteer';
 import About from './page/Buyer/About';
 import ProfileAdmin from './page/Admin/profileAdmin';
+import ListAdmin from './page/Admin/listAdmin';
 
 function App() {
   axios.defaults.baseURL = 'https://backendlagi.online';
@@ -80,6 +81,7 @@ function App() {
             <Route path="/list-ticket-admin" element={<ListTicket />} />
             <Route path="/chat-admin" element={<ChatAdmin />} />
             <Route path="/profile-admin" element={<ProfileAdmin />} />
+            <Route path="/list-admin" element={<ListAdmin />} />
           </Route>
           {/* Partner */}
           <Route path="/login-partner" element={<LoginPartner />} />
