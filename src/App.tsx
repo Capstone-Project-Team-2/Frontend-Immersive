@@ -59,8 +59,8 @@ function App() {
           <Route path="/regis-buyer" element={<RegisBuyer />} />
           <Route path="/login-admin" element={<LoginAdmin />} />
           <Route path="/event-buyer" element={<EventBuyer />} />
-          <Route path="/detail-event" element={<DetailEvent />} />
-          <Route path="/detail-pemesanan" element={<DetailPemesanan />} />
+          <Route path="/detail-event/:id" element={<DetailEvent />} />
+          <Route path="/detail-pemesanan/:id" element={<DetailPemesanan />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/about" element={<About />} />
           <Route path="/" element={<LayoutBuyer />}>

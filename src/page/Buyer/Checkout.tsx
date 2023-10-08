@@ -46,10 +46,12 @@ const Checkout = () => {
                 <div className='font-bold text-center my-10 text-xl'>INSTRUKSI
                     <div
                         onClick={handleInternet}
-                        className='my-2'
+                        className='my-2 cursor-pointer'
+
                     >
                         INTERNET BANKING</div>
                     <div onClick={handleAtm}
+                    className='cursor-pointer'
                     >
                         ATM</div>
                 </div>
@@ -58,34 +60,34 @@ const Checkout = () => {
                 <div className="w-[30vw] h-[60vh] flex flex-col">
                     <div className="text-[24px] text-center font-semibold my-2"
                     onClick={handleInternet}>
-                        Internet
+                        Internet Banking
                     </div>
                     <div className="mx-auto mt-5">
                        <div> 1.Login ke internet banking Bank BNI Anda</div>
                         <div>2.Pilih menu Transaksi lalu klik menu Virtual Account Billing</div>
-                        3.Masukkan Nomor VA (9883033311254643) lalu pilih Rekening Debit
-                        4.Detail transaksi akan ditampilkan, pastikan data sudah sesuai
-                        5.Masukkan respon key BNI appli 2
-                        6.Transaksi sukses, simpan bukti transaksi Anda
+                        <div>3.Masukkan Nomor VA (9883033311254643) lalu pilih Rekening Debit</div>
+                        <div>4.Detail transaksi akan ditampilkan, pastikan data sudah sesuai</div>
+                        <div>5.Masukkan respon key BNI appli 2</div>
+                        <div>6.Transaksi sukses, simpan bukti transaksi Anda</div>
                     </div>
                 </div>
             </Modal>
             <Modal isOpen={popupAtm} onClose={() => setPopupAtm(false)}>
-                <div className="w-[30vw] h-[60vh] flex flex-col">
+                <div className="w-[30vw] h-[70vh] flex flex-col">
                     <div className="text-[24px] text-center font-semibold my-2"
                     onClick={handleAtm}>
                         ATM
                     </div>
                     <div className="mx-auto mt-5">
-                        1.Masukkan kartu Anda
-                        2.Pilih Bahasa
-                        3.Masukkan PIN ATM Anda
-                        4.Kemudian, pilih Menu Lainnya
-                        5.Pilih Transfer dan pilih jenis rekening yang akan digunakan (Contoh: Dari rekening Tabungan)
-                        6.Pilih Virtual Account Billing. Masukkan Nomor VA (9883033311254643)
-                        7.Tagihan yang harus dibayarkan akan muncul pada layar konfirmasi
-                        8.Konfirmasi, apabila telah selesai, lanjutkan transaksi
-                        9.Transaksi Anda telah selesai
+                        <div>1.Masukkan kartu Anda</div>
+                        <div>2.Pilih Bahasa</div>
+                        <div>3.Masukkan PIN ATM Anda</div>
+                        <div>4.Kemudian, pilih Menu Lainnya</div>
+                        <div>5.Pilih Transfer dan pilih jenis rekening yang akan digunakan (Contoh: Dari rekening Tabungan)</div>
+                        <div>6.Pilih Virtual Account Billing. Masukkan Nomor VA (9883033311254643)</div>
+                        <div>7.Tagihan yang harus dibayarkan akan muncul pada layar konfirmasi</div>
+                        <div>8.Konfirmasi, apabila telah selesai, lanjutkan transaksi</div>
+                        <div>9.Transaksi Anda telah selesai</div>
                        
                     </div>
                 </div>
