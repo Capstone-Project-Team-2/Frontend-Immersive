@@ -99,7 +99,7 @@ const NavbarBuyer = () => {
             </div>
             <div className="relative group" onClick={toggleDropdown}>
               <img
-                src="https://i.pinimg.com/236x/a3/09/ed/a309ed3530e0f365781d8c2607ac4e7e--profile-pictures.jpg"
+                src={data.profile_picture ? data.profile_picture : "https://www.copaster.com/wp-content/uploads/2023/03/pp-kosong-wa-default-300x279.jpeg"}
                 alt="Profile"
                 className="h-8 w-8 rounded-full cursor-pointer"
               />
@@ -119,7 +119,7 @@ const NavbarBuyer = () => {
                       Tiket
                     </a>
                     <a
-                      href="/about"
+                      href="/"
                       className="block px-4 py-2 text-sm text-white hover:bg-blue-700"
                       onClick={() => handleLogout()}
                     >

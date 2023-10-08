@@ -30,7 +30,7 @@ const TiketBuyer = () => {
                             <div className='ml-10 flex flex-col text-bold'>
                                 <div className='text-extrabold text-3xl font-[titan]'>ROCK IN SOLO FESTIVAL</div>
                                 <div className='flex flex-row my-3'>
-                                    <SlCalender/>
+                                    <SlCalender />
                                     <div className='ml-3 flex font-semibold '>10 Dec 2023</div>
                                 </div>
                                 <Button
@@ -44,13 +44,20 @@ const TiketBuyer = () => {
                     </div>
                 </div>
                 <Modal isOpen={popup} onClose={() => setPopup(false)}>
-                    <div className="w-[30vw] h-[60vh] flex flex-col items-center justify-center">
-                        <div className="text-2xl font-semibold my-2">
+                    <div className="w-[30vw] h-[40vh] items-center justify-center">
+                        <div className="text-2xl text-center  font-semibold my-3">
                             TIKET
                         </div>
-                        <QRCode value={buyerId} size={200} />
-                        <div className="text-sm mt-4">
-                           
+                        <div className='flex flex-row my-5 gap-x-5'>
+                        <div className='flex justify-center'>
+                            <QRCode value={buyerId} size={150} />
+                        </div>
+                        <div className='flex flex-col gap-y-3'>
+                            <div className='text-lg font-bold'>ROCK IN SOLO FESTIVAL</div>
+                            <div>10 Dec 2023 10:00 - 23:00</div>
+                            <div>Benteng Vastenburg, Jawa Tengah</div>
+                            <div className=' font-bold'>VIP</div>
+                        </div>
                         </div>
                     </div>
                 </Modal>

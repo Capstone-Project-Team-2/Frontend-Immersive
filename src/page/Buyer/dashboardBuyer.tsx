@@ -1,14 +1,35 @@
 import NavbarBuyer from '../../component/navbarBuyer';
 import FootbarBuyer from '../../component/footbarBuyer';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '../../component/modal';
 import Button from '../../component/button';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const DashboardBuyer = () => {
   const navigate = useNavigate();
   const [popupSignIn, setPopupSignIn] = useState<boolean>(false);
   const [popupSignUp, setPopupSignUp] = useState<boolean>(false);
+  const [dataEvent, setDataEvent] = useState<[]>([]);
+
+  const detailEvent = (event: any) => {
+    navigate(`/detail-event/${event}`, {
+        state: {
+            id: event.id
+        }
+    })
+}
+  const getEvent = () => {
+    axios
+      .get(`/events?item=4`,)
+      .then((res) => {
+        setDataEvent(res?.data?.data);
+      })
+      .catch(() => {
+        toast.error("Gagal mendapatkan data");
+      });
+  };
 
   const handleSignIn = () => {
     setPopupSignIn(!popupSignIn);
@@ -17,6 +38,11 @@ const DashboardBuyer = () => {
   const handleSignUp = () => {
     setPopupSignUp(!popupSignUp);
   };
+
+  useEffect(() => {
+    getEvent()
+  }, [])
+
 
   return (
     <section>
@@ -49,108 +75,48 @@ const DashboardBuyer = () => {
       </div>
       <h1 className="font-bold text-xl mt-8 mb-4 text-center">EVENT NOW!</h1>
       <div className="m-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          <a href="/detail-event">
-            <img
-              className="rounded-t-lg w-full h-40 "
-              src="https://up2you2.com/wp-content/uploads/2022/11/music_4x.webp"
-              alt=""
-            />
-          </a>
-          <div className="p-5">
-            <a href="/detail-event">
-              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Noteworthy technology acquisitions 2021
-              </h5>
-            </a>
-            <p className="mb-3 mt-10 font-normal text-gray-700 dark:text-gray-400">
-              28 Oktober 2023
-            </p>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Rp.250.000
-            </p>
-            <div className="flex items-center justify-between mt-10">
-              <div className="flex items-center">
-                <div className="w-8 h-8 rounded-full  overflow-hidden mr-2">
+        {
+          dataEvent.map((item: any, index) => {
+            return (
+              <div key={index} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
+                <div className='cursor-pointer'>
                   <img
-                    src="https://s3-ap-southeast-1.amazonaws.com/loket-production-sg/images/organization/20230404103610_642b9b2ae7f59.png"
-                    alt="Bulat"
-                    className="w-full h-full object-cover"
+                    className="rounded-t-lg w-full h-40 "
+                    src={item.banner_picture}
+                    alt=""
+                    onClick={() => detailEvent(item.id)}
                   />
                 </div>
-                <span>PESTIGE PROMOTIONS</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          <a href="/detail-event">
-            <img
-              className="rounded-t-lg w-full h-40 "
-              src="https://www.shutterstock.com/shutterstock/photos/1286805256/display_1500/stock-vector-vector-colorful-music-festival-for-event-banner-and-poster-colorful-geometric-abstract-background-1286805256.jpg"
-              alt=""
-            />
-          </a>
-          <div className="p-5">
-            <a href="/detail-event">
-              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Noteworthy technology acquisitions 2021
-              </h5>
-            </a>
-            <p className="mb-3 mt-10 font-normal text-gray-700 dark:text-gray-400">
-              28 Oktober 2023
-            </p>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Rp.250.000
-            </p>
-            <div className="flex items-center justify-between mt-10">
-              <div className="flex items-center">
-                <div className="w-8 h-8 rounded-full  overflow-hidden mr-2">
-                  <img
-                    src="https://s3-ap-southeast-1.amazonaws.com/loket-production-sg/images/organization/20230404103610_642b9b2ae7f59.png"
-                    alt="Bulat"
-                    className="w-full h-full object-cover"
-                  />
+                <div className="p-5">
+                  <a href="/detail-event">
+                    <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      {item.name}
+                    </h5>
+                  </a>
+                  <p className="mb-3 mt-10 font-normal text-gray-700 dark:text-gray-400">
+                    {item.start_date}
+                  </p>
+                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    {item.location}
+                  </p>
+                  <div className="flex items-center justify-between mt-10">
+                    <div className="flex items-center">
+                      <div className="w-8 h-8 rounded-full  overflow-hidden mr-2">
+                        <img
+                          src={item.partner.profile_picture}
+                          alt="Bulat"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <span>{item.partner.name}</span>
+                    </div>
+                  </div>
                 </div>
-                <span>PESTIGE PROMOTIONS</span>
               </div>
-            </div>
-          </div>
-        </div>
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          <a href="/detail-event">
-            <img
-              className="rounded-t-lg w-full h-40"
-              src="https://png.pngtree.com/png-clipart/20210815/original/pngtree-music-festival-creative-gradient-banner-png-image_6639203.jpg"
-              alt=""
-            />
-          </a>
-          <div className="p-5">
-            <a href="/detail-event">
-              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Noteworthy technology acquisitions 2021
-              </h5>
-            </a>
-            <p className="mb-3 mt-10 font-normal text-gray-700 dark:text-gray-400">
-              28 Oktober 2023
-            </p>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Rp.250.000
-            </p>
-            <div className="flex items-center justify-between mt-10">
-              <div className="flex items-center">
-                <div className="w-8 h-8 rounded-full  overflow-hidden mr-2">
-                  <img
-                    src="https://s3-ap-southeast-1.amazonaws.com/loket-production-sg/images/organization/20230404103610_642b9b2ae7f59.png"
-                    alt="Bulat"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <span>PESTIGE PROMOTIONS</span>
-              </div>
-            </div>
-          </div>
-        </div>
+            );
+          })}
+        
+        
       </div>
       <div className="my-5 flex justify-center">
         <button
@@ -175,43 +141,29 @@ const DashboardBuyer = () => {
         </button>
       </div>
       <h1 className="font-bold text-xl mt-8  mb-4 text-center">PARTNERSHIP</h1>
-      <div className="flex justify-center space-x-4">
-        <a href="/link-ke-partner-1">
-          <img
-            src="https://metaloker.com/wp-content/uploads/2023/06/Loker-Gree.webp"
-            alt="Partner 1"
-            className="w-52 h-52 border-black border-5 rounded-full cursor-pointer"
-          />
-        </a>
-        <a href="/link-ke-partner-2">
-          <img
-            src="https://metaloker.com/wp-content/uploads/2023/06/Loker-Gree.webp"
-            alt="Partner 2"
-            className="w-52 h-52 border-black rounded-full cursor-pointer"
-          />
-        </a>
-        <a href="/link-ke-partner-3">
-          <img
-            src="https://metaloker.com/wp-content/uploads/2023/06/Loker-Gree.webp"
-            alt="Partner 3"
-            className="w-52 h-52 rounded-full cursor-pointer"
-          />
-        </a>
-        <a href="/link-ke-partner-4">
-          <img
-            src="https://metaloker.com/wp-content/uploads/2023/06/Loker-Gree.webp"
-            alt="Partner 4"
-            className="w-52 h-52 rounded-full cursor-pointer"
-          />
-        </a>
-        <a href="/link-ke-partner-5">
-          <img
-            src="https://metaloker.com/wp-content/uploads/2023/06/Loker-Gree.webp"
-            alt="Partner 5"
-            className="w-52 h-52 rounded-full cursor-pointer"
-          />
-        </a>
-      </div>
+            <div className="flex justify-center space-x-4">
+      {
+        dataEvent.map((item: any, index) => {
+          return (
+              <div>
+                <img
+                  src={item.partner.profile_picture}
+                  alt="Partner 1"
+                  className="w-52 h-52 border-black border-5 rounded-full"
+                />
+              </div>
+              );
+            })}
+              <div>
+                <img
+                  src="https://metaloker.com/wp-content/uploads/2023/06/Loker-Gree.webp"
+                  alt="Partner 3"
+                  className="w-52 h-52 rounded-full"
+                />
+              </div>
+              
+            </div>
+
       <Modal isOpen={popupSignIn} onClose={() => setPopupSignIn(false)}>
         <div className="w-[30vw] h-[30vh] flex flex-col">
           <div className="text-[24px] text-center font-semibold my-2">
