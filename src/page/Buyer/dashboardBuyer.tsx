@@ -15,19 +15,19 @@ const DashboardBuyer = () => {
 
   const detailEvent = (event: any) => {
     navigate(`/detail-event/${event}`, {
-        state: {
-            id: event.id
-        }
-    })
-}
+      state: {
+        id: event.id,
+      },
+    });
+  };
   const getEvent = () => {
     axios
-      .get(`/events?item=4`,)
+      .get(`/events?item=4&page=1`)
       .then((res) => {
         setDataEvent(res?.data?.data);
       })
       .catch(() => {
-        toast.error("Gagal mendapatkan data");
+        toast.error('Gagal mendapatkan data');
       });
   };
 
@@ -40,9 +40,8 @@ const DashboardBuyer = () => {
   };
 
   useEffect(() => {
-    getEvent()
-  }, [])
-
+    getEvent();
+  }, []);
 
   return (
     <section>
@@ -75,48 +74,48 @@ const DashboardBuyer = () => {
       </div>
       <h1 className="font-bold text-xl mt-8 mb-4 text-center">EVENT NOW!</h1>
       <div className="m-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-        {
-          dataEvent.map((item: any, index) => {
-            return (
-              <div key={index} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-                <div className='cursor-pointer'>
-                  <img
-                    className="rounded-t-lg w-full h-40 "
-                    src={item.banner_picture}
-                    alt=""
-                    onClick={() => detailEvent(item.id)}
-                  />
-                </div>
-                <div className="p-5">
-                  <a href="/detail-event">
-                    <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                      {item.name}
-                    </h5>
-                  </a>
-                  <p className="mb-3 mt-10 font-normal text-gray-700 dark:text-gray-400">
-                    {item.start_date}
-                  </p>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    {item.location}
-                  </p>
-                  <div className="flex items-center justify-between mt-10">
-                    <div className="flex items-center">
-                      <div className="w-8 h-8 rounded-full  overflow-hidden mr-2">
-                        <img
-                          src={item.partner.profile_picture}
-                          alt="Bulat"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <span>{item.partner.name}</span>
+        {dataEvent.map((item: any, index) => {
+          return (
+            <div
+              key={index}
+              className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
+            >
+              <div className="cursor-pointer">
+                <img
+                  className="rounded-t-lg w-full h-40 "
+                  src={item.banner_picture}
+                  alt=""
+                  onClick={() => detailEvent(item.id)}
+                />
+              </div>
+              <div className="p-5">
+                <a href="/detail-event">
+                  <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {item.name}
+                  </h5>
+                </a>
+                <p className="mb-3 mt-10 font-normal text-gray-700 dark:text-gray-400">
+                  {item.start_date}
+                </p>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  {item.location}
+                </p>
+                <div className="flex items-center justify-between mt-10">
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 rounded-full  overflow-hidden mr-2">
+                      <img
+                        src={item.partner.profile_picture}
+                        alt="Bulat"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
+                    <span>{item.partner.name}</span>
                   </div>
                 </div>
               </div>
-            );
-          })}
-        
-        
+            </div>
+          );
+        })}
       </div>
       <div className="my-5 flex justify-center">
         <button
@@ -136,33 +135,34 @@ const DashboardBuyer = () => {
           pengalaman membeli tiket dan menghadiri event menjadi lebih sederhana,
           aman, dan menghibur.
         </p>
-        <button className="bg-blue-700 hover:bg-blue-950 hover:ring-2 rounded-full my-5 py-3 px-10">
+        <button
+          onClick={() => navigate('/about')}
+          className="bg-blue-700 hover:bg-blue-950 hover:ring-2 rounded-full my-5 py-3 px-10"
+        >
           More
         </button>
       </div>
       <h1 className="font-bold text-xl mt-8  mb-4 text-center">PARTNERSHIP</h1>
-            <div className="flex justify-center space-x-4">
-      {
-        dataEvent.map((item: any, index) => {
+      <div className="flex justify-center space-x-4">
+        {dataEvent.map((item: any, index) => {
           return (
-              <div>
-                <img
-                  src={item.partner.profile_picture}
-                  alt="Partner 1"
-                  className="w-52 h-52 border-black border-5 rounded-full"
-                />
-              </div>
-              );
-            })}
-              <div>
-                <img
-                  src="https://metaloker.com/wp-content/uploads/2023/06/Loker-Gree.webp"
-                  alt="Partner 3"
-                  className="w-52 h-52 rounded-full"
-                />
-              </div>
-              
+            <div>
+              <img
+                src={item.partner.profile_picture}
+                alt="Partner 1"
+                className="w-52 h-52 border-black border-5 rounded-full"
+              />
             </div>
+          );
+        })}
+        <div>
+          <img
+            src="https://metaloker.com/wp-content/uploads/2023/06/Loker-Gree.webp"
+            alt="Partner 3"
+            className="w-52 h-52 rounded-full"
+          />
+        </div>
+      </div>
 
       <Modal isOpen={popupSignIn} onClose={() => setPopupSignIn(false)}>
         <div className="w-[30vw] h-[30vh] flex flex-col">
