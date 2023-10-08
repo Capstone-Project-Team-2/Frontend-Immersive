@@ -23,7 +23,6 @@ const Sidebar = () => {
       path: "/dashboard-partner",
     },
     { title: "Event Saya", url: <MdEvent />, path: "/myevents" },
-    { title: "Detail Event", url: <MdEvent />, path: "/myevents/:id" },
     { title: "Validation", url: <SiSymantec />, path: "/validation" },
     { title: "Ticket", url: <HiTicket />, path: `/ticket` },
     { title: "Promo", url: <MdDiscount />, path: "/promo" },
