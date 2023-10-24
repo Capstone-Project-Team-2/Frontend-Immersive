@@ -9,50 +9,59 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const DetailPemesanan = () => {
-
   const navigate = useNavigate();
   const eventId = useParams();
   const [detail, setDetail] = useState();
   const [tanggal, setTanggal] = useState();
   const [waktu, setWaktu] = useState();
-  const [ticket, setTicket] = useState();
-  const [totalTiket, setTotalTiket] = useState(0);
-  const [totalHarga, setTotalHarga] = useState(0);
-  const [reguler, setReguler] = useState();
-
-  const handleRegulerChange = (quantity) => {
-    const totalHargaSemuaTiket = detail?.ticket.reduce((total, item) => {
-      const hargaTiket = item.price || 0;
-      return total + hargaTiket * quantity;
-    }, 0);
-
-    setTotalTiket(quantity);
-    setTotalHarga(totalHargaSemuaTiket);
-  };
-
+  const [ticketQuantities, setTicketQuantities] = useState({});
+  // const [showDetailHarga, setShowDetailHarga] = useState(false);
 
   useEffect(() => {
     getEvent();
-    window.scrollTo(0, 0);
   }, []);
 
   const getEvent = () => {
     axios
-      .get(`/events/${eventId.id}`,)
+      .get(`/events/${eventId.id}`)
       .then((res) => {
         setDetail(res?.data?.data);
-        setTicket(res?.data?.data.ticket);
-        console.log(res?.data?.data)
+        console.log(res?.data?.data);
         const startDateParts = res?.data.data.start_date.split(' ');
-        setTanggal(startDateParts[0])
-        setWaktu(startDateParts[1])
+        setTanggal(startDateParts[0]);
+        setWaktu(startDateParts[1]);
       })
       .catch(() => {
-        toast.error("Gagal mendapatkan data");
+        toast.error('Gagal mendapatkan data');
       });
   };
 
+  const handleTicketQuantityChange = (ticketId, quantity) => {
+    setTicketQuantities({
+      ...ticketQuantities,
+      [ticketId]: quantity,
+    });
+  };
 
+  const calculateTotalTicket = () => {
+    let totalTickets = 0;
+    for (const ticketId in ticketQuantities) {
+      totalTickets += ticketQuantities[ticketId];
+    }
+    return totalTickets;
+  };
+
+  const calculateTotalCost = () => {
+    let totalCost = 0;
+    for (const ticketId in ticketQuantities) {
+      const quantity = ticketQuantities[ticketId];
+      const ticket = detail?.ticket.find((item) => item.id === ticketId);
+      if (ticket) {
+        totalCost += ticket.price * quantity;
+      }
+    }
+    return totalCost;
+  };
 
   return (
     <section className="bg-gray-100">
@@ -98,14 +107,26 @@ const DetailPemesanan = () => {
                 Pilih Tiket
               </div>
               <div className="flex flex-col space-y-4">
-                {detail?.ticket?.map((item: any, index) => {
+                {detail?.ticket?.map((ticket: any, index) => {
+                  const ticketId = ticket.id;
+                  const selectedQuantity = ticketQuantities[ticketId] || 0;
+
                   return (
                     <div key={index} className="items-center space-x-2">
-                      <span className="font-semibold text-blue-500">{item.name_class}</span>
+                      <span className="font-semibold text-blue-500">
+                        {ticket.name_class}
+                      </span>
                       <div className="flex justify-between mt-2">
-                        {item.price}
-                        <select className="border p-1 rounded"
-                          onChange={(e) => handleRegulerChange(parseInt(e.target.value))}
+                        {ticket.price}
+                        <select
+                          className="border p-1 rounded"
+                          onChange={(e) =>
+                            handleTicketQuantityChange(
+                              ticketId,
+                              parseInt(e.target.value)
+                            )
+                          }
+                          value={selectedQuantity}
                         >
                           <option value="0">0</option>
                           <option value="1">1</option>
@@ -116,7 +137,7 @@ const DetailPemesanan = () => {
                         </select>
                       </div>
                     </div>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -135,20 +156,26 @@ const DetailPemesanan = () => {
               </div>
             </div>
             <div className="font-bold text-2xl my-5">Detail Harga</div>
-            {detail?.ticket?.map((item, index) => (
-              <div key={index} className="flex flex-row justify-between text-lg font-medium mb-2">
-                <div>{item.name_class}</div>
-                <div>{item.name_class === 'VIP' ? 5 - totalTiket : totalTiket}</div>
-              </div>
-            ))}
+            {detail?.ticket?.map((ticket, index) => {
+              const quantity = ticketQuantities[ticket.id] || 0;
+              return (
+                <div
+                  key={index}
+                  className="flex flex-row justify-between text-lg font-medium mb-2"
+                >
+                  <div>{ticket.name_class}</div>
+                  <div>{quantity}</div>
+                </div>
+              );
+            })}
             <div className="border-t border-gray-400 mb-2"></div>
             <div className="flex flex-row justify-between text-lg font-medium mb-2">
               <div>Total Tiket</div>
-              <div>{totalTiket}</div>
+              <div>{calculateTotalTicket()}</div>
             </div>
             <div className="flex flex-row justify-between text-lg font-medium mb-2">
               <div>Total Harga Tiket</div>
-              <div>Rp.{totalHarga.toLocaleString()}</div>
+              <div>Rp.{calculateTotalCost().toLocaleString()}</div>
             </div>
             <div className="flex flex-row justify-between text-lg font-medium mb-2">
               <div>Biaya Layanan</div>
@@ -157,7 +184,7 @@ const DetailPemesanan = () => {
             <div className="border-t border-gray-400 mb-2"></div>
             <div className="flex flex-row justify-between  font-bold text-xl mt-2">
               <div>Total Bayar</div>
-              <div>Rp.{(totalHarga + 5000).toLocaleString()}</div>
+              <div>Rp.{(calculateTotalCost() + 5000).toLocaleString()}</div>
             </div>
             <div className="flex flex-col mb-4 mt-10">
               <label className="text-lg font-medium mb-4">
@@ -168,7 +195,6 @@ const DetailPemesanan = () => {
                   Pilih Metode Pembayaran
                 </option>
                 <option value="bca">Bank BCA</option>
-
               </select>
             </div>
             <button
@@ -181,7 +207,7 @@ const DetailPemesanan = () => {
         </div>
       </AnimatedPage>
       <FootbarBuyer />
-    </section >
+    </section>
   );
 };
 
